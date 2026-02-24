@@ -11,6 +11,7 @@ import { AuthService, RegisterPayload } from '../../services/auth.service';
 })
 export class RegisterComponent {
   errorMessage = '';
+  successMessage = '';
   showPassword = false;
   showConfirmPassword = false;
 
@@ -51,6 +52,9 @@ export class RegisterComponent {
     }
 
     const value = this.form.getRawValue();
+    this.errorMessage = '';
+    this.successMessage = '';
+
     if (value.password !== value.confirmPassword) {
       this.errorMessage = 'Password and confirm password must match.';
       return;
@@ -76,16 +80,14 @@ export class RegisterComponent {
       companyLocation: value.companyLocation ?? ''
     };
 
-    this.authService.register(payload).subscribe({
-      next: (ok) => {
-        if (!ok) {
-          this.errorMessage = 'Registration completed, but auto login failed. Try login manually.';
-          return;
-        }
+    this.authService.registerOnly(payload).subscribe({
+      next: () => {
+        const roleText = payload.role === 'EMPLOYER' ? 'employer' : 'job_seeker';
+        this.successMessage = `Registration successful as ${roleText}. Redirecting to login page...`;
 
-        this.errorMessage = '';
-        const role = this.authService.getRole();
-        this.router.navigate([role === 'employer' ? '/employer-dashboard' : '/job-seeker-dashboard']);
+        setTimeout(() => {
+          this.router.navigate(['/login'], { replaceUrl: true });
+        }, 1500);
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 0) {

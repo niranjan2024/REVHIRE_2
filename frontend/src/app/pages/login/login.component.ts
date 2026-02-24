@@ -38,7 +38,9 @@ export class LoginComponent {
 
       this.errorMessage = '';
       const role = this.authService.getRole();
-      this.router.navigate([role === 'employer' ? '/employer-dashboard' : '/job-seeker-dashboard']);
+      this.router.navigate([role === 'employer' ? '/employer-dashboard' : '/job-seeker-dashboard'], {
+        replaceUrl: true
+      });
     });
   }
 }

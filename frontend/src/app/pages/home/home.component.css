@@ -10,38 +10,47 @@
 }
 
 .home-auth-nav {
-  width: min(720px, 90%);
+  width: min(520px, 90%);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid #d1d5db;
-  background: rgba(255, 255, 255, 0.82);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(2px);
-  border-radius: 10px 10px 0 0;
+  border-radius: 12px;
+  padding: 0.8rem;
 }
 
 .home-auth-nav a {
-  display: inline-flex;
+  display: flex;
+  min-width: 180px;
   justify-content: center;
   align-items: center;
-  padding: 0.9rem 0.75rem;
-  color: #111827;
-  font-size: 2rem;
+  padding: 0.8rem 1rem;
+  color: #ffffff;
+  background: #38bdf8;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: 600;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: transform 0.15s ease, background-color 0.2s ease;
 }
 
 .home-auth-nav a:hover {
-  color: #1d4ed8;
+  background: #0ea5e9;
+  transform: translateY(-1px);
 }
 
 .home-auth-nav a.active-link {
-  color: #1d4ed8;
-  border-bottom: 2px solid #1d4ed8;
+  background: #0284c7;
 }
 
 @media (max-width: 640px) {
+  .home-auth-nav {
+    flex-direction: column;
+  }
+
   .home-auth-nav a {
-    font-size: 1.6rem;
+    width: 100%;
   }
 }

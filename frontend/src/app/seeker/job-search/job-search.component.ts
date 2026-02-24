@@ -13,6 +13,7 @@ import { JobFilter, JobService } from '../../services/job.service';
 export class JobSearchComponent implements OnInit {
   jobs: JobModel[] = [];
   message = '';
+  seekerName = '';
 
   filtersForm = this.fb.group({
     role: [''],
@@ -32,6 +33,8 @@ export class JobSearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const seeker = this.authService.getCurrentUser();
+    this.seekerName = seeker?.name?.trim() || 'Job Seeker';
     this.search();
   }
 

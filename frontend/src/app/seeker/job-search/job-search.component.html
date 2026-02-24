@@ -1,4 +1,10 @@
-﻿<section>
+<section>
+  <div class="welcome-card">
+    <p class="welcome-tag">Job Seeker Dashboard</p>
+    <h2>Welcome, {{ seekerName }}</h2>
+    <p class="welcome-subtitle">Find jobs that match your profile and apply in one click.</p>
+  </div>
+
   <h2>Search Jobs</h2>
   <form [formGroup]="filtersForm" (ngSubmit)="search()" class="filters">
     <input formControlName="role" placeholder="Job role" />
@@ -26,7 +32,6 @@
       [job]="job"
       [isFavorite]="isFavorite(job.id)"
       (apply)="apply($event)"
-      (favorite)="toggleFavorite($event)"
-    ></app-job-card>
+      (favorite)="toggleFavorite($event)"></app-job-card>
   </div>
 </section>
