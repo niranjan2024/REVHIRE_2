@@ -1,0 +1,93 @@
+.register-shell {
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: #f3f4f6;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+h2 {
+  margin: 0 0 1.2rem;
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+.form {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+}
+
+.form textarea {
+  min-height: 76px;
+  resize: vertical;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.eye-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 6px;
+  background: transparent;
+  color: #475569;
+  padding: 0;
+  border: none;
+  line-height: 1;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.input-with-icon .eye-toggle {
+  width: 28px;
+}
+
+.eye-toggle:hover {
+  background: #f8fafc;
+}
+
+.input-with-icon input {
+  padding-right: 2.2rem;
+}
+
+.form button:not(.eye-toggle) {
+  margin-top: 0.4rem;
+  background: #f59e0b;
+  color: #111827;
+  font-weight: 600;
+  padding: 0.6rem 0.85rem;
+  width: 100%;
+}
+
+.form button:not(.eye-toggle):hover {
+  background: #f59e0b;
+}
+
+.error {
+  color: #c0392b;
+  margin: 0.25rem 0 0;
+}

@@ -1,0 +1,21 @@
+﻿.card {
+  max-width: 700px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.form {
+  display: grid;
+  gap: 0.65rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.message {
+  color: #166534;
+}

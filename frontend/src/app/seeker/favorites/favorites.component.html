@@ -1,0 +1,9 @@
+﻿<section>
+  <h2>Saved Jobs</h2>
+  <article class="card" *ngFor="let job of favoriteJobs">
+    <h3>{{ job.title }} - {{ job.companyName }}</h3>
+    <p>{{ job.location }} | {{ job.jobType }}</p>
+    <button type="button" (click)="remove(job)">Remove</button>
+  </article>
+  <p *ngIf="favoriteJobs.length === 0">No saved jobs yet.</p>
+</section>

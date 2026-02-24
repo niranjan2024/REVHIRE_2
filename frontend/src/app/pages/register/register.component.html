@@ -1,0 +1,60 @@
+<section class="register-shell">
+  <div class="card">
+    <h2>Sign up with RevHire</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <input formControlName="username" type="text" placeholder="Username" />
+      <input *ngIf="!isEmployer" formControlName="fullName" type="text" placeholder="Full Name" />
+      <input formControlName="email" type="email" placeholder="Email Address" />
+
+      <div class="input-with-icon">
+        <input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password" />
+        <button
+          type="button"
+          class="eye-toggle"
+          [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+          (click)="showPassword = !showPassword">
+          &#128065;
+        </button>
+      </div>
+
+      <div class="input-with-icon">
+        <input formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirm Password" />
+        <button
+          type="button"
+          class="eye-toggle"
+          [attr.aria-label]="showConfirmPassword ? 'Hide confirm password' : 'Show confirm password'"
+          (click)="showConfirmPassword = !showConfirmPassword">
+          &#128065;
+        </button>
+      </div>
+
+      <input formControlName="mobileNumber" type="text" placeholder="Mobile Number" />
+
+      <select formControlName="role">
+        <option value="JOB_SEEKER">Job Seeker</option>
+        <option value="EMPLOYER">Employer</option>
+      </select>
+
+      <input formControlName="securityQuestion" type="text" placeholder="Security Question" />
+      <input formControlName="securityAnswer" type="text" placeholder="Security Answer" />
+
+      <ng-container *ngIf="!isEmployer">
+        <input formControlName="location" type="text" placeholder="Location" />
+        <input formControlName="employmentStatus" type="text" placeholder="Employment Status" />
+      </ng-container>
+
+      <ng-container *ngIf="isEmployer">
+        <input formControlName="companyName" type="text" placeholder="Company Name" />
+        <input formControlName="industry" type="text" placeholder="Industry" />
+        <input formControlName="companySize" type="text" placeholder="Company Size" />
+        <textarea formControlName="companyDescription" placeholder="Company Description"></textarea>
+        <input formControlName="website" type="text" placeholder="Website" />
+        <input formControlName="companyLocation" type="text" placeholder="Company Location" />
+      </ng-container>
+
+      <button type="submit">Sign up</button>
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+  </div>
+</section>

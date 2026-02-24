@@ -1,0 +1,17 @@
+﻿<section>
+  <h2>My Applications</h2>
+  <article class="card" *ngFor="let application of applications">
+    <h3>{{ application.job?.title }} - {{ application.job?.companyName }}</h3>
+    <p>Applied On: {{ application.appliedAt | date: 'medium' }}</p>
+    <p>Status: <strong>{{ application.status }}</strong></p>
+    <p *ngIf="application.comments">Employer Comment: {{ application.comments }}</p>
+    <p *ngIf="application.withdrawReason">Withdrawal Reason: {{ application.withdrawReason }}</p>
+    <button
+      type="button"
+      *ngIf="application.status !== 'Withdrawn' && application.status !== 'Rejected'"
+      (click)="withdraw(application.id)"
+    >
+      Withdraw
+    </button>
+  </article>
+</section>

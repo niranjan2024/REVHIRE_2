@@ -1,0 +1,16 @@
+<section class="login-shell">
+  <div class="card">
+    <h2>Login to RevHire</h2>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+      <input formControlName="username" type="text" placeholder="Username" />
+      <input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password" />
+      <label class="inline-check">
+        <input type="checkbox" [checked]="showPassword" (change)="showPassword = !showPassword" />
+        Show password
+      </label>
+      <button type="submit">Login</button>
+      <a routerLink="/forgot-password" class="forgot-link">Forgot Password?</a>
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+  </div>
+</section>
