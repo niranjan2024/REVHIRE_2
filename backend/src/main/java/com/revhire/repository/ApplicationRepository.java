@@ -9,6 +9,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
 
     List<Application> findByJob_JobId(Long jobId);
     List<Application> findByUser_UserId(Long userId);
+    boolean existsByJob_JobIdAndUser_UserIdAndStatusNot(Long jobId, Long userId, String status);
     long countByJob_JobId(Long jobId);
     long countByJob_JobIdAndStatus(Long jobId, String status);
 }

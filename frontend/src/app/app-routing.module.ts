@@ -1,13 +1,14 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
+import { loggedOutGuard } from './guards/logged-out.guard';
 import { roleGuard } from './guards/role.guard';
-import { DashboardComponent } from './employer/dashboard/dashboard.component';
 import { ApplicantsComponent } from './employer/applicants/applicants.component';
+import { DashboardComponent } from './employer/dashboard/dashboard.component';
 import { JobPostingsComponent } from './employer/job-postings/job-postings.component';
 import { NotificationCenterComponent } from './notifications/notification-center/notification-center.component';
-import { HomeComponent } from './pages/home/home.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ApplicationsComponent } from './seeker/applications/applications.component';
@@ -17,9 +18,9 @@ import { ProfileComponent } from './seeker/profile/profile.component';
 import { ResumeBuilderComponent } from './seeker/resume-builder/resume-builder.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: '', component: HomeComponent, canActivate: [loggedOutGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [loggedOutGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [loggedOutGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'job-seeker-dashboard', redirectTo: 'seeker/jobs' },
   { path: 'employer-dashboard', redirectTo: 'employer/dashboard' },

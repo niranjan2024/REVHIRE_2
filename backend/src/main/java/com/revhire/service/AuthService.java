@@ -73,6 +73,7 @@ public class AuthService {
         if ("EMPLOYER".equalsIgnoreCase(req.role)) {
             EmployerProfile employerProfile = new EmployerProfile();
             employerProfile.setUser(savedUser);
+            employerProfile.setContactName(req.fullName != null && !req.fullName.isBlank() ? req.fullName : req.username);
             employerProfile.setCompanyName(req.companyName);
             employerProfile.setIndustry(req.industry);
             employerProfile.setWebsite(req.website);
@@ -114,6 +115,9 @@ public class AuthService {
         response.role = user.getRole();
         response.fullName = jobSeekerProfileRepo.findByUser_UserId(user.getUserId())
                 .map(JobSeekerProfile::getFullName)
+                .or(() -> employerProfileRepo.findByUser_UserId(user.getUserId()).map(EmployerProfile::getContactName))
+                .or(() -> employerProfileRepo.findByUser_UserId(user.getUserId()).map(EmployerProfile::getCompanyName))
+                .filter(name -> name != null && !name.isBlank())
                 .orElse(user.getUsername());
         return response;
     }

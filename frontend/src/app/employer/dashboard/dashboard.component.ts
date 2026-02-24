@@ -9,6 +9,7 @@ import { JobService } from '../../services/job.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  employerName = '';
   totalJobs = 0;
   activeJobs = 0;
   totalApplications = 0;
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
     if (!user) {
       return;
     }
+    this.employerName = user.name?.trim() || 'Employer';
 
     this.jobService.getJobsByEmployer(user.id).subscribe((jobs) => {
       this.applicationService.getByJobIds(jobs.map((job) => job.id)).subscribe((applications) => {

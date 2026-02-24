@@ -45,6 +45,14 @@ public class ApplicationService {
         log.info("Applying for jobId={} by userId={}",
                 job.getJobId(), user.getUserId());
 
+        boolean alreadyApplied = appRepo.existsByJob_JobIdAndUser_UserIdAndStatusNot(
+                job.getJobId(),
+                user.getUserId(),
+                "WITHDRAWN");
+        if (alreadyApplied) {
+            throw new BusinessException("You have already applied for this job.");
+        }
+
         Application app = new Application();
         app.setJob(job);
         app.setUser(user);

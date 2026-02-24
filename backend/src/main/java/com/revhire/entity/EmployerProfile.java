@@ -22,6 +22,9 @@ public class EmployerProfile {
     @JoinColumn(name = "auth_id", nullable = false, unique = true)
     private User user;
 
+    @Column(name = "contact_name")
+    private String contactName;
+
     private String companyName;
     private String industry;
     private String companySize;

@@ -80,6 +80,10 @@ export class AuthService {
     );
   }
 
+  registerOnly(payload: RegisterPayload) {
+    return this.http.post(`${API_BASE_URL}/register`, payload, { responseType: 'text' });
+  }
+
   registerSeeker(payload: {
     name: string;
     email?: string;
