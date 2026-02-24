@@ -1,6 +1,102 @@
 <section class="home-start">
-  <nav class="home-auth-nav">
-    <a routerLink="/login" routerLinkActive="active-link">Login</a>
-    <a routerLink="/register" routerLinkActive="active-link">Register</a>
-  </nav>
+  <div class="auth-shell">
+    <div class="tabs">
+      <button type="button" class="tab-btn" [class.tab-active]="activePanel === 'login'" (click)="openPanel('login')">
+        Login
+      </button>
+      <button
+        type="button"
+        class="tab-btn"
+        [class.tab-active]="activePanel === 'register'"
+        (click)="openPanel('register')">
+        Register
+      </button>
+    </div>
+
+    <h1 class="title">{{ activePanel === 'login' ? 'Welcome Back' : 'Create Account' }}</h1>
+
+    <form *ngIf="activePanel === 'login'" [formGroup]="loginForm" (ngSubmit)="submitLogin()" class="form">
+      <label for="login-email">Email</label>
+      <input id="login-email" formControlName="email" type="email" placeholder="Enter your email" />
+
+      <label for="login-password">Password</label>
+      <input
+        id="login-password"
+        formControlName="password"
+        [type]="showLoginPassword ? 'text' : 'password'"
+        placeholder="Enter your password" />
+
+      <label class="inline-check">
+        <input type="checkbox" [checked]="showLoginPassword" (change)="showLoginPassword = !showLoginPassword" />
+        Show password
+      </label>
+
+      <button type="submit" class="action-btn">Login</button>
+      <a routerLink="/forgot-password" class="forgot-link">Forgot Password?</a>
+      <p class="error" *ngIf="loginError">{{ loginError }}</p>
+      <p class="success" *ngIf="registerSuccess">{{ registerSuccess }}</p>
+    </form>
+
+    <form
+      *ngIf="activePanel === 'register'"
+      [formGroup]="registerForm"
+      (ngSubmit)="submitRegister()"
+      class="form register-form">
+      <input formControlName="username" type="text" placeholder="Username" />
+      <input formControlName="fullName" type="text" placeholder="Full Name" />
+      <input formControlName="email" type="email" placeholder="Email Address" />
+
+      <div class="input-with-icon">
+        <input
+          formControlName="password"
+          [type]="showRegisterPassword ? 'text' : 'password'"
+          placeholder="Password" />
+        <button type="button" class="eye-toggle" (click)="showRegisterPassword = !showRegisterPassword">Show</button>
+      </div>
+
+      <div class="input-with-icon">
+        <input
+          formControlName="confirmPassword"
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          placeholder="Confirm Password" />
+        <button type="button" class="eye-toggle" (click)="showConfirmPassword = !showConfirmPassword">Show</button>
+      </div>
+
+      <input formControlName="mobileNumber" type="text" placeholder="Mobile Number" />
+
+      <select formControlName="role">
+        <option value="" disabled>Choose your role</option>
+        <option value="JOB_SEEKER">Job Seeker</option>
+        <option value="EMPLOYER">Employer</option>
+      </select>
+
+      <select formControlName="securityQuestion">
+        <option value="" disabled>Choose security question</option>
+        <option value="What is the name of your first school?">What is the name of your first school?</option>
+        <option value="What is your childhood nickname?">What is your childhood nickname?</option>
+        <option value="What is your favourite teacher's name?">What is your favourite teacher's name?</option>
+        <option value="What is the name of your best friend in school?">What is the name of your best friend in school?</option>
+        <option value="In which city were you born?">In which city were you born?</option>
+      </select>
+      <input formControlName="securityAnswer" type="text" placeholder="Security Answer" />
+
+      <ng-container *ngIf="!isEmployer">
+        <input formControlName="location" type="text" placeholder="Location" />
+        <input formControlName="employmentStatus" type="text" placeholder="Employment Status" />
+      </ng-container>
+
+      <ng-container *ngIf="isEmployer">
+        <input formControlName="companyName" type="text" placeholder="Company Name" />
+        <input formControlName="industry" type="text" placeholder="Industry" />
+        <input formControlName="companySize" type="text" placeholder="Company Size" />
+        <textarea formControlName="companyDescription" placeholder="Company Description"></textarea>
+        <input formControlName="website" type="text" placeholder="Website" />
+        <input formControlName="companyLocation" type="text" placeholder="Company Location" />
+      </ng-container>
+
+      <button type="submit" class="action-btn register-submit">Sign up</button>
+      <p class="error register-msg" *ngIf="registerError">{{ registerError }}</p>
+      <p class="success register-msg" *ngIf="registerSuccess">{{ registerSuccess }}</p>
+    </form>
+  </div>
 </section>

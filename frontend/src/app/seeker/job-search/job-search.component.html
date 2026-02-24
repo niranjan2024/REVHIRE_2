@@ -31,6 +31,7 @@
       *ngFor="let job of jobs"
       [job]="job"
       [isFavorite]="isFavorite(job.id)"
+      [canApply]="canApplyForJob(job.id)"
       (apply)="apply($event)"
       (favorite)="toggleFavorite($event)"></app-job-card>
   </div>

@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { ApplicationModel, ApplicationStatus } from '../models/application.model';
 import { UserModel } from '../models/user.model';
 import { API_BASE_URL } from './config/api.config';
@@ -35,7 +35,20 @@ export class ApplicationService {
       jobId,
       userId: seeker.id,
       coverLetter: coverLetter ?? null
-    }).pipe(map(() => ({ ok: true, message: 'Application submitted.' })));
+    }).pipe(
+      map(() => ({ ok: true, message: 'Application submitted.' })),
+      catchError((error: HttpErrorResponse) => {
+        if (typeof error.error === 'string' && error.error.trim().length > 0) {
+          return of({ ok: false, message: error.error });
+        }
+
+        if (error.error?.message) {
+          return of({ ok: false, message: error.error.message });
+        }
+
+        return of({ ok: false, message: 'Failed to submit application.' });
+      })
+    );
   }
 
   getBySeeker(seekerId: number): Observable<ApplicationModel[]> {
