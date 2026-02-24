@@ -22,7 +22,7 @@ export class RegisterComponent {
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
     securityQuestion: ['', Validators.required],
     securityAnswer: ['', Validators.required],
-    role: ['JOB_SEEKER', Validators.required],
+    role: ['', Validators.required],
     fullName: [''],
     location: [''],
     employmentStatus: [''],

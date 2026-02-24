@@ -1,10 +1,15 @@
 .login-shell {
   min-height: calc(100vh - 68px);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
-  background: #f3f4f6;
+  background-image: url('/assets/images/RevHire_Logindb.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card {
@@ -48,8 +53,8 @@ h2 {
 
 .form button {
   margin-top: 0.35rem;
-  background: #f59e0b;
-  color: #111827;
+  background: #38bdf8;
+  color: #ffffff;
   font-weight: 600;
   padding: 0.6rem 0.85rem;
 }

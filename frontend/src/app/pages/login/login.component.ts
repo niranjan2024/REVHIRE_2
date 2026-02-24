@@ -13,7 +13,7 @@ export class LoginComponent {
   showPassword = false;
 
   form = this.fb.group({
-    username: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
 
@@ -30,7 +30,7 @@ export class LoginComponent {
     }
 
     const payload = this.form.getRawValue();
-    this.authService.login(payload.username ?? '', payload.password ?? '').subscribe((ok) => {
+    this.authService.login(payload.email ?? '', payload.password ?? '').subscribe((ok) => {
       if (!ok) {
         this.errorMessage = 'Invalid credentials.';
         return;

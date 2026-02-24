@@ -31,12 +31,20 @@
 
       <input formControlName="mobileNumber" type="text" placeholder="Mobile Number" />
 
-      <select formControlName="role">
+      <select id="role" formControlName="role">
+        <option value="" disabled>Choose your role</option>
         <option value="JOB_SEEKER">Job Seeker</option>
         <option value="EMPLOYER">Employer</option>
       </select>
 
-      <input formControlName="securityQuestion" type="text" placeholder="Security Question" />
+      <select formControlName="securityQuestion">
+        <option value="" disabled>Choose security question</option>
+        <option value="What is the name of your first school?">What is the name of your first school?</option>
+        <option value="What is your childhood nickname?">What is your childhood nickname?</option>
+        <option value="What is your favourite teacher’s name?">What is your favourite teacher’s name?</option>
+        <option value="What is the name of your best friend in school?">What is the name of your best friend in school?</option>
+        <option value="In which city were you born?">In which city were you born?</option>
+      </select>
       <input formControlName="securityAnswer" type="text" placeholder="Security Answer" />
 
       <ng-container *ngIf="!isEmployer">

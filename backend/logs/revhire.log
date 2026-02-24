@@ -41,3 +41,24 @@
 2026-02-24 11:36:08 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
 2026-02-24 11:36:08 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
 2026-02-24 11:36:15 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 7.507 seconds (process running for 8.344)
+2026-02-24 12:15:31 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 22120 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-24 12:15:31 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-24 12:15:31 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-24 12:15:39 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 8.867 seconds (process running for 11.119)
+2026-02-24 14:15:08 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Applying for jobId=1 by userId=1
+2026-02-24 14:15:08 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Application created with applicationId=1
+2026-02-24 14:16:05 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-24 14:16:10 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-24 14:16:20 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Shortlisting applicationId=1
+2026-02-24 14:16:20 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Application 1 shortlisted for job 'Java Developer'
+2026-02-24 14:16:20 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Notification sent to userId=1
+2026-02-24 14:42:51 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-24 14:42:59 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-24 15:27:13 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 16636 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-24 15:27:13 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-24 15:27:13 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-24 15:27:17 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 4.794 seconds (process running for 5.58)
+2026-02-24 15:38:11 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 21880 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-24 15:38:11 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-24 15:38:11 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-24 15:38:16 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 4.678 seconds (process running for 5.443)

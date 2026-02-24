@@ -95,11 +95,16 @@ public class AuthService {
     }
 
     public LoginResponse login(LoginRequest req) {
+        if (req.username == null || req.username.isBlank() || req.password == null || req.password.isBlank()) {
+            throw new BusinessException("Email and password are required");
+        }
+
+        String loginInput = req.username.trim();
+        String hashedPassword = PasswordUtil.hashPassword(req.password);
 
         User user = userRepo
-                .findByUsernameAndPassword(
-                        req.username,
-                        PasswordUtil.hashPassword(req.password))
+                .findByUsernameAndPassword(loginInput, hashedPassword)
+                .or(() -> userRepo.findByEmailAndPassword(loginInput, hashedPassword))
                 .orElseThrow(() ->
                         new BusinessException("Invalid credentials"));
 

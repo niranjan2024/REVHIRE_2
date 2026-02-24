@@ -1,10 +1,15 @@
 .register-shell {
   min-height: calc(100vh - 68px);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
-  background: #f3f4f6;
+  background-image: url('/assets/images/RevHire_Logindb.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card {
@@ -76,15 +81,15 @@ h2 {
 
 .form button:not(.eye-toggle) {
   margin-top: 0.4rem;
-  background: #f59e0b;
-  color: #111827;
+  background: #38bdf8;
+  color: #ffffff;
   font-weight: 600;
   padding: 0.6rem 0.85rem;
   width: 100%;
 }
 
 .form button:not(.eye-toggle):hover {
-  background: #f59e0b;
+  background: #38bdf8;
 }
 
 .error {
