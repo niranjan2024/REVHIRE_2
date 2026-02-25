@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "applications")
@@ -32,4 +33,13 @@ public class Application {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Transient
+    private String seekerFullName;
+
+    @Transient
+    private Integer seekerExperienceYears;
+
+    @Transient
+    private List<String> seekerSkills;
 }
