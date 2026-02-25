@@ -9,3 +9,18 @@
   display: flex;
   gap: 0.5rem;
 }
+
+.apply-btn {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+
+.applied-btn {
+  background: #c0c0c0;
+  color: #1f2937;
+  cursor: not-allowed;
+}

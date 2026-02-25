@@ -3,7 +3,9 @@
   <article class="card" *ngFor="let notification of notifications">
     <p><strong>{{ notification.type | uppercase }}</strong> - {{ notification.message }}</p>
     <p>{{ notification.createdAt | date: 'medium' }}</p>
-    <button type="button" *ngIf="!notification.isRead" (click)="markAsRead(notification.id)">Mark as Read</button>
+    <button type="button" [disabled]="notification.isRead" (click)="markAsRead(notification.id)">
+      {{ notification.isRead ? 'Already Read' : 'Mark as Read' }}
+    </button>
   </article>
 
   <p *ngIf="notifications.length === 0">No notifications yet.</p>

@@ -49,10 +49,14 @@ export class AuthService {
   login(username: string, password: string) {
     return this.http.post<LoginResponse>(`${API_BASE_URL}/login`, { username, password }).pipe(
       tap((response) => {
+        const role = this.normalizeRole(response.role);
+        const displayName = response.fullName || response.username || '';
+
         const user: UserModel = {
           id: response.userId,
-          role: this.normalizeRole(response.role),
-          name: response.fullName || response.username || '',
+          role,
+          username: response.username || '',
+          name: displayName,
           email: '',
           password,
           phone: '',
@@ -129,6 +133,7 @@ export class AuthService {
       securityQuestion: 'Default security question?',
       securityAnswer: 'default',
       role: 'EMPLOYER',
+      fullName: payload.name,
       companyName: payload.companyName,
       industry: payload.industry,
       companySize: payload.companySize,

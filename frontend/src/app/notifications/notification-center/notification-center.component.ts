@@ -32,8 +32,15 @@ export class NotificationCenterComponent implements OnInit {
   }
 
   markAsRead(notificationId: number): void {
+    const current = this.notifications.find((item) => item.id === notificationId);
+    if (!current || current.isRead) {
+      return;
+    }
+
     this.notificationService.markAsRead(notificationId).subscribe(() => {
-      this.load();
+      this.notifications = this.notifications.map((notification) =>
+        notification.id === notificationId ? { ...notification, isRead: true } : notification
+      );
     });
   }
 }

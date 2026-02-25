@@ -1,0 +1,8 @@
+2026-02-23 15:17:36 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 6632 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-23 15:17:36 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-23 15:17:36 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-23 15:17:43 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 8.352 seconds (process running for 9.924)
+2026-02-23 17:19:01 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 19276 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-23 17:19:01 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-23 17:19:01 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-23 17:19:07 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 6.355 seconds (process running for 7.348)

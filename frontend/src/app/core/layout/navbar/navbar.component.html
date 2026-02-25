@@ -23,7 +23,26 @@
 
   <div *ngIf="showAuthActions" class="auth">
     <a *ngIf="showGuestAuthLinks" routerLink="/login">Login</a>
-    <a *ngIf="showGuestAuthLinks" routerLink="/register">Register</a>
-    <button *ngIf="authService.isLoggedIn()" (click)="logout()">Logout</button>
+    <a *ngIf="showGuestAuthLinks && !isForgotPasswordRoute" routerLink="/register">Register</a>
+    <div *ngIf="authService.isLoggedIn()" class="profile-menu">
+      <button type="button" class="avatar-btn" (click)="toggleProfileMenu()">
+        <img
+          *ngIf="authService.getCurrentUser()?.profileImageDataUrl; else avatarFallback"
+          [src]="authService.getCurrentUser()?.profileImageDataUrl"
+          alt="Profile"
+          class="avatar-img"
+        />
+        <ng-template #avatarFallback>
+          <span class="avatar-fallback">
+            {{ authService.getCurrentUser()?.name?.charAt(0) || 'U' }}
+          </span>
+        </ng-template>
+      </button>
+
+      <div class="menu-box" *ngIf="profileMenuOpen">
+        <button type="button" class="menu-item" (click)="openProfile()">Profile</button>
+        <button type="button" class="menu-item" (click)="logout()">Log Out</button>
+      </div>
+    </div>
   </div>
 </header>

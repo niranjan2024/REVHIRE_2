@@ -17,16 +17,25 @@
 
   <article class="card" *ngFor="let application of applications">
     <h3>{{ application.seekerName }} for {{ application.job?.title }}</h3>
-    <p>Applied: {{ application.appliedAt | date: 'medium' }} | Status: {{ application.status }}</p>
+    <p>
+      Applied: {{ application.appliedAt | date: 'medium' }} | Status:
+      <span
+        class="status-badge"
+        [class.status-shortlisted]="application.status === 'Shortlisted'"
+        [class.status-rejected]="application.status === 'Rejected'"
+      >
+        {{ application.status }}
+      </span>
+    </p>
     <p>Skills: {{ application.seekerSkills.join(', ') || 'N/A' }}</p>
     <p>Experience: {{ application.seekerExperience.join(', ') || 'N/A' }}</p>
     <p *ngIf="application.coverLetter">Cover Letter: {{ application.coverLetter }}</p>
     <p *ngIf="application.note">Internal Note: {{ application.note }}</p>
     <div class="actions">
-      <button type="button" (click)="setStatus(application.id, 'Under Review')">Under Review</button>
-      <button type="button" (click)="setStatus(application.id, 'Shortlisted')">Shortlist</button>
-      <button type="button" (click)="setStatus(application.id, 'Rejected')">Reject</button>
-      <button type="button" (click)="saveNote(application.id)">Add Note</button>
+      <button type="button" class="btn-review" (click)="setStatus(application.id, 'Under Review')">Under Review</button>
+      <button type="button" class="btn-shortlist" (click)="setStatus(application.id, 'Shortlisted')">Shortlist</button>
+      <button type="button" class="btn-reject" (click)="setStatus(application.id, 'Rejected')">Reject</button>
+      <button type="button" class="btn-note" (click)="saveNote(application.id)">Add Note</button>
     </div>
   </article>
 </section>

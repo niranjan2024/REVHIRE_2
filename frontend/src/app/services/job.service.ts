@@ -39,6 +39,7 @@ interface BackendJob {
 })
 export class JobService {
   private favoritesBySeeker = new Map<number, Set<number>>();
+  private readonly favoritesStorageKeyPrefix = 'revhire.favorite.jobs.';
 
   constructor(private readonly http: HttpClient) {}
 
@@ -86,6 +87,25 @@ export class JobService {
       .pipe(map(() => void 0));
   }
 
+  updateJob(jobId: number, payload: Omit<JobModel, 'id' | 'datePosted' | 'status'>): Observable<JobModel> {
+    return this.http
+      .put<BackendJob>(`${API_BASE_URL}/employer/job/${jobId}`, {
+        employerId: payload.employerId,
+        title: payload.title,
+        description: payload.description,
+        companyName: payload.companyName,
+        education: payload.education,
+        requiredExperienceYears: payload.experienceYears,
+        location: payload.location,
+        salaryMin: payload.salaryMin,
+        salaryMax: payload.salaryMax,
+        jobType: payload.jobType,
+        deadline: payload.deadline,
+        requiredSkills: payload.skills
+      })
+      .pipe(map((job) => this.toFrontendJob(job)));
+  }
+
   updateJobStatus(jobId: number, status: JobStatus): Observable<void> {
     if (status === 'filled') {
       return this.http.put(`${API_BASE_URL}/employer/job/${jobId}/fill`, {}).pipe(map(() => void 0));
@@ -103,30 +123,53 @@ export class JobService {
     return this.getAllJobs().pipe(map((jobs) => jobs.filter((job) => job.employerId === employerId)));
   }
 
-  toggleFavorite(seekerId: number, jobId: number): void {
-    if (!this.favoritesBySeeker.has(seekerId)) {
-      this.favoritesBySeeker.set(seekerId, new Set<number>());
+  toggleFavorite(seekerId: number, jobId: number, job?: JobModel): void {
+    const savedJobs = this.getStoredFavoriteJobs(seekerId);
+    const exists = savedJobs.some((item) => item.id === jobId);
+
+    if (exists) {
+      this.storeFavoriteJobs(
+        seekerId,
+        savedJobs.filter((item) => item.id !== jobId)
+      );
+      return;
     }
 
-    const favorites = this.favoritesBySeeker.get(seekerId)!;
-    if (favorites.has(jobId)) {
-      favorites.delete(jobId);
-    } else {
-      favorites.add(jobId);
+    if (!job) {
+      return;
     }
+
+    this.storeFavoriteJobs(seekerId, [...savedJobs, job]);
   }
 
   isFavorite(seekerId: number, jobId: number): boolean {
-    return this.favoritesBySeeker.get(seekerId)?.has(jobId) ?? false;
+    return this.getStoredFavoriteJobs(seekerId).some((job) => job.id === jobId);
   }
 
   getFavoriteJobs(seekerId: number): Observable<JobModel[]> {
-    const ids = this.favoritesBySeeker.get(seekerId);
-    if (!ids || ids.size === 0) {
-      return of([]);
-    }
+    return of(this.getStoredFavoriteJobs(seekerId));
+  }
 
-    return this.getAllJobs().pipe(map((jobs) => jobs.filter((job) => ids.has(job.id))));
+  private getStoredFavoriteJobs(seekerId: number): JobModel[] {
+    try {
+      const raw = localStorage.getItem(`${this.favoritesStorageKeyPrefix}${seekerId}`);
+      if (!raw) {
+        return [];
+      }
+
+      const parsed = JSON.parse(raw) as unknown;
+      if (!Array.isArray(parsed)) {
+        return [];
+      }
+
+      return parsed as JobModel[];
+    } catch {
+      return [];
+    }
+  }
+
+  private storeFavoriteJobs(seekerId: number, jobs: JobModel[]): void {
+    localStorage.setItem(`${this.favoritesStorageKeyPrefix}${seekerId}`, JSON.stringify(jobs));
   }
 
   private toFrontendJob(job: BackendJob): JobModel {

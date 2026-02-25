@@ -12,6 +12,7 @@ export interface ResumeSectionModel {
 export interface UserModel {
   id: number;
   role: UserRole;
+  username?: string;
   name: string;
   email: string;
   password: string;
@@ -24,5 +25,6 @@ export interface UserModel {
   certifications: string[];
   resume?: ResumeSectionModel;
   uploadedResumeName?: string;
+  profileImageDataUrl?: string;
   companyId?: number;
 }

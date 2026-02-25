@@ -35,7 +35,7 @@ export class JobSearchComponent implements OnInit {
 
   ngOnInit(): void {
     const seeker = this.authService.getCurrentUser();
-    this.seekerName = seeker?.name?.trim() || 'Job Seeker';
+    this.seekerName = seeker?.username?.trim() || seeker?.name?.trim() || 'Job Seeker';
     if (seeker) {
       this.applicationService.getBySeeker(seeker.id).subscribe((applications) => {
         this.appliedJobIds.clear();
@@ -89,7 +89,7 @@ export class JobSearchComponent implements OnInit {
       return;
     }
 
-    this.jobService.toggleFavorite(seeker.id, job.id);
+    this.jobService.toggleFavorite(seeker.id, job.id, job);
   }
 
   isFavorite(jobId: number): boolean {

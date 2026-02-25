@@ -16,14 +16,21 @@ interface BackendApplication {
   seekerFullName?: string;
   seekerExperienceYears?: number;
   seekerSkills?: string[];
+  skills?: string[] | string;
+  resume?: {
+    skills?: string[] | string;
+  };
   job: {
     jobId: number;
+    title?: string;
+    companyName?: string;
   };
   user: {
     userId: number;
     fullName?: string;
     username?: string;
     experience?: number;
+    skills?: string[] | string;
   };
 }
 
@@ -31,6 +38,8 @@ interface BackendApplication {
   providedIn: 'root'
 })
 export class ApplicationService {
+  private readonly localApplicationsPrefix = 'revhire.local.applications.';
+
   constructor(private readonly http: HttpClient) {}
 
   apply(jobId: number, seeker: UserModel, coverLetter?: string): Observable<{ ok: boolean; message: string }> {
@@ -69,7 +78,10 @@ export class ApplicationService {
             coverLetter: coverLetter ?? null
           })
         ),
-        map(() => ({ ok: true, message: 'Application submitted.' })),
+        map((application) => {
+          this.cacheApplication(seeker.id, this.toFrontend(application));
+          return { ok: true, message: 'Application submitted.' };
+        }),
         catchError((error: HttpErrorResponse) => {
           if (typeof error.error === 'string' && error.error.trim().length > 0) {
             return of({ ok: false, message: error.error });
@@ -87,7 +99,13 @@ export class ApplicationService {
   getBySeeker(seekerId: number): Observable<ApplicationModel[]> {
     return this.http
       .get<BackendApplication[]>(`${API_BASE_URL}/applications/user/${seekerId}`)
-      .pipe(map((items) => items.map((item) => this.toFrontend(item))));
+      .pipe(
+        map((items) => {
+          const remote = items.map((item) => this.toFrontend(item));
+          return this.mergeApplications(remote, this.getCachedApplications(seekerId));
+        }),
+        catchError(() => of(this.getCachedApplications(seekerId)))
+      );
   }
 
   getByJobIds(jobIds: number[]): Observable<ApplicationModel[]> {
@@ -126,7 +144,12 @@ export class ApplicationService {
         userId,
         reason: reason ?? ''
       })
-      .pipe(map(() => void 0));
+      .pipe(
+        map(() => {
+          this.updateCachedApplicationStatus(userId, applicationId, 'Withdrawn');
+          return void 0;
+        })
+      );
   }
 
   addNote(applicationId: number, note: string): Observable<void> {
@@ -144,9 +167,11 @@ export class ApplicationService {
     return {
       id: application.applicationId,
       jobId: application.job.jobId,
+      jobTitle: application.job.title,
+      companyName: application.job.companyName,
       seekerId: application.user.userId,
       seekerName: application.seekerFullName || application.user.fullName || application.user.username || 'Candidate',
-      seekerSkills: application.seekerSkills ?? [],
+      seekerSkills: this.extractSkills(application),
       seekerExperience: experienceText,
       coverLetter: application.coverLetter,
       status: this.normalizeStatus(application.status),
@@ -179,5 +204,83 @@ export class ApplicationService {
 
     const match = value.match(/\d+/);
     return match ? Number(match[0]) : 0;
+  }
+
+  private extractSkills(application: BackendApplication): string[] {
+    const candidates: unknown[] = [application.seekerSkills, application.skills, application.user.skills, application.resume?.skills];
+
+    for (const candidate of candidates) {
+      const normalized = this.normalizeSkills(candidate);
+      if (normalized.length) {
+        return normalized;
+      }
+    }
+
+    return [];
+  }
+
+  private normalizeSkills(value: unknown): string[] {
+    if (Array.isArray(value)) {
+      return value
+        .map((item) => {
+          if (typeof item === 'string') {
+            return item;
+          }
+
+          if (item && typeof item === 'object') {
+            const record = item as Record<string, unknown>;
+            const fallback = record['skill'] ?? record['name'] ?? record['skillName'];
+            return typeof fallback === 'string' ? fallback : '';
+          }
+
+          return '';
+        })
+        .map((item) => item.trim())
+        .filter((item) => !!item);
+    }
+
+    if (typeof value === 'string') {
+      return value
+        .split(',')
+        .map((item) => item.trim())
+        .filter((item) => !!item);
+    }
+
+    return [];
+  }
+
+  private cacheApplication(seekerId: number, application: ApplicationModel): void {
+    const cached = this.getCachedApplications(seekerId);
+    const merged = this.mergeApplications([application], cached);
+    localStorage.setItem(`${this.localApplicationsPrefix}${seekerId}`, JSON.stringify(merged));
+  }
+
+  private getCachedApplications(seekerId: number): ApplicationModel[] {
+    try {
+      const raw = localStorage.getItem(`${this.localApplicationsPrefix}${seekerId}`);
+      if (!raw) {
+        return [];
+      }
+
+      const parsed = JSON.parse(raw) as unknown;
+      return Array.isArray(parsed) ? (parsed as ApplicationModel[]) : [];
+    } catch {
+      return [];
+    }
+  }
+
+  private mergeApplications(primary: ApplicationModel[], secondary: ApplicationModel[]): ApplicationModel[] {
+    const byId = new Map<number, ApplicationModel>();
+    [...secondary, ...primary].forEach((application) => {
+      byId.set(application.id, application);
+    });
+    return Array.from(byId.values()).sort((a, b) => +new Date(b.appliedAt) - +new Date(a.appliedAt));
+  }
+
+  private updateCachedApplicationStatus(seekerId: number, applicationId: number, status: ApplicationStatus): void {
+    const updated = this.getCachedApplications(seekerId).map((application) =>
+      application.id === applicationId ? { ...application, status } : application
+    );
+    localStorage.setItem(`${this.localApplicationsPrefix}${seekerId}`, JSON.stringify(updated));
   }
 }

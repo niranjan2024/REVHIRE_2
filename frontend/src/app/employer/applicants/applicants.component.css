@@ -18,3 +18,50 @@
   gap: 0.5rem;
   flex-wrap: wrap;
 }
+
+.actions button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-review {
+  background: #facc15;
+  color: #1f2937;
+}
+
+.btn-shortlist {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.btn-reject {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.btn-note {
+  background: #c0c0c0;
+  color: #1f2937;
+}
+
+.status-badge {
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  background: #e2e8f0;
+  color: #1f2937;
+}
+
+.status-shortlisted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}

@@ -18,9 +18,12 @@ interface BackendNotification {
   providedIn: 'root'
 })
 export class NotificationService {
+  private readonly storageKey = 'revhire_read_notifications';
   private readLocally = new Set<number>();
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {
+    this.readLocally = this.loadReadNotifications();
+  }
 
   push(_userId: number, _message: string, _type: NotificationType = 'info'): void {}
 
@@ -41,10 +44,38 @@ export class NotificationService {
 
   markAsRead(notificationId: number): Observable<void> {
     this.readLocally.add(notificationId);
+    this.persistReadNotifications();
     return of(void 0);
   }
 
   getUnreadCount(userId: number): Observable<number> {
     return this.getForUser(userId).pipe(map((items) => items.filter((notification) => !notification.isRead).length));
+  }
+
+  private loadReadNotifications(): Set<number> {
+    try {
+      const raw = localStorage.getItem(this.storageKey);
+      if (!raw) {
+        return new Set<number>();
+      }
+
+      const parsed = JSON.parse(raw) as unknown;
+      if (!Array.isArray(parsed)) {
+        return new Set<number>();
+      }
+
+      const ids = parsed.filter((item) => typeof item === 'number') as number[];
+      return new Set<number>(ids);
+    } catch {
+      return new Set<number>();
+    }
+  }
+
+  private persistReadNotifications(): void {
+    try {
+      localStorage.setItem(this.storageKey, JSON.stringify(Array.from(this.readLocally)));
+    } catch {
+      // Ignore storage errors to keep notifications usable.
+    }
   }
 }

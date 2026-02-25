@@ -1,7 +1,22 @@
-﻿.card {
+.card {
   border: 1px solid #cbd5e1;
   border-radius: 8px;
   padding: 0.75rem;
   margin-bottom: 0.75rem;
   background: #fff;
+}
+
+button {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #cbd5e1;
+  color: #475569;
+  cursor: not-allowed;
 }

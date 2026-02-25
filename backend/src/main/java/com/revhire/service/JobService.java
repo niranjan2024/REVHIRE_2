@@ -9,6 +9,7 @@ import com.revhire.repository.ApplicationRepository;
 import com.revhire.repository.JobSeekerProfileRepository;
 import com.revhire.repository.JobRepository;
 import com.revhire.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -130,10 +131,12 @@ public class JobService {
         jobRepo.save(job);
     }
 
+    @Transactional
     public void deleteJob(Long id) {
         if (!jobRepo.existsById(id))
             throw new BusinessException("Job not found");
 
+        appRepo.deleteAllByJobId(id);
         jobRepo.deleteById(id);
     }
 

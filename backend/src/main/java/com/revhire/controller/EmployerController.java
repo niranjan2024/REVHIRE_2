@@ -66,6 +66,12 @@ public class EmployerController {
         return ResponseEntity.ok("Job marked as filled");
     }
 
+    @PutMapping("/job/{id}/mark-filled")
+    public ResponseEntity<String> markJobFilled(@PathVariable Long id) {
+        jobService.fillJob(id);
+        return ResponseEntity.ok("Job marked as filled");
+    }
+
     @DeleteMapping("/job/{id}")
     public ResponseEntity<String> deleteJob(@PathVariable Long id) {
         jobService.deleteJob(id);

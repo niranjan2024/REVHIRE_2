@@ -8,6 +8,8 @@
 export interface ApplicationModel {
   id: number;
   jobId: number;
+  jobTitle?: string;
+  companyName?: string;
   seekerId: number;
   seekerName: string;
   seekerSkills: string[];

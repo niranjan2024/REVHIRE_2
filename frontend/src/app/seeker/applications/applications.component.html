@@ -1,7 +1,10 @@
-﻿<section>
+<section>
   <h2>My Applications</h2>
   <article class="card" *ngFor="let application of applications">
-    <h3>{{ application.job?.title }} - {{ application.job?.companyName }}</h3>
+    <h3>
+      {{ application.jobTitle || ('Job ID: ' + application.jobId) }}
+      <span *ngIf="application.companyName"> - {{ application.companyName }}</span>
+    </h3>
     <p>Applied On: {{ application.appliedAt | date: 'medium' }}</p>
     <p>Status: <strong>{{ application.status }}</strong></p>
     <p *ngIf="application.comments">Employer Comment: {{ application.comments }}</p>

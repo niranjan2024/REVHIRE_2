@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationModel } from '../../models/application.model';
-import { JobModel } from '../../models/job.model';
 import { ApplicationService } from '../../services/application.service';
 import { AuthService } from '../../services/auth.service';
-import { JobService } from '../../services/job.service';
 
 @Component({
   selector: 'app-applications',
@@ -11,12 +9,11 @@ import { JobService } from '../../services/job.service';
   styleUrls: ['./applications.component.css']
 })
 export class ApplicationsComponent implements OnInit {
-  applications: Array<ApplicationModel & { job?: JobModel }> = [];
+  applications: ApplicationModel[] = [];
 
   constructor(
     private readonly authService: AuthService,
-    private readonly applicationService: ApplicationService,
-    private readonly jobService: JobService
+    private readonly applicationService: ApplicationService
   ) {}
 
   ngOnInit(): void {
@@ -30,12 +27,7 @@ export class ApplicationsComponent implements OnInit {
     }
 
     this.applicationService.getBySeeker(user.id).subscribe((applications) => {
-      this.jobService.getAllJobs().subscribe((jobs) => {
-        this.applications = applications.map((application) => ({
-          ...application,
-          job: jobs.find((job) => job.id === application.jobId)
-        }));
-      });
+      this.applications = applications;
     });
   }
 

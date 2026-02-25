@@ -10,8 +10,11 @@ import { ProfileService } from '../../services/profile.service';
 })
 export class ProfileComponent implements OnInit {
   message = '';
+  profileImageDataUrl = '';
 
   form = this.fb.group({
+    username: [{ value: '', disabled: true }],
+    email: [{ value: '', disabled: true }],
     name: ['', Validators.required],
     phone: ['', Validators.required],
     location: ['', Validators.required],
@@ -19,7 +22,8 @@ export class ProfileComponent implements OnInit {
     skills: [''],
     education: [''],
     experience: [''],
-    certifications: ['']
+    certifications: [''],
+    resumeSkills: [{ value: '', disabled: true }]
   });
 
   constructor(
@@ -35,6 +39,8 @@ export class ProfileComponent implements OnInit {
     }
 
     this.form.patchValue({
+      username: user.username ?? '',
+      email: user.email ?? '',
       name: user.name,
       phone: user.phone,
       location: user.location,
@@ -42,8 +48,10 @@ export class ProfileComponent implements OnInit {
       skills: user.skills.join(', '),
       education: user.education.join(', '),
       experience: user.experience.join(', '),
-      certifications: user.certifications.join(', ')
+      certifications: user.certifications.join(', '),
+      resumeSkills: user.resume?.skills?.join(', ') ?? ''
     });
+    this.profileImageDataUrl = user.profileImageDataUrl ?? '';
   }
 
   save(): void {
@@ -66,8 +74,32 @@ export class ProfileComponent implements OnInit {
       })
       .subscribe((updated) => {
         this.authService.updateCurrentUser(updated);
-        this.message = 'Profile updated.';
+        this.message = 'Profile updated successfully.';
       });
+  }
+
+  uploadProfileImage(event: Event): void {
+    const user = this.authService.getCurrentUser();
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!user || !file) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = typeof reader.result === 'string' ? reader.result : '';
+      if (!result) {
+        return;
+      }
+
+      this.profileImageDataUrl = result;
+      this.authService.updateCurrentUser({
+        ...user,
+        profileImageDataUrl: result
+      });
+    };
+    reader.readAsDataURL(file);
   }
 
   private toArray(value: string | null): string[] {

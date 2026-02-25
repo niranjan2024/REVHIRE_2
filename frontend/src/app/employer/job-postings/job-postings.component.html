@@ -1,5 +1,6 @@
 ﻿<section>
   <h2>Manage Job Postings</h2>
+  <p *ngIf="actionMessage">{{ actionMessage }}</p>
 
   <form [formGroup]="form" (ngSubmit)="createJob()" class="grid">
     <input formControlName="companyName" placeholder="Company name" />
@@ -21,18 +22,30 @@
     </select>
     <input formControlName="deadline" type="date" />
     <input formControlName="openings" type="number" placeholder="Openings" />
-    <button type="submit">Create Job</button>
+    <button type="submit">{{ editingJobId !== null ? 'Update Job' : 'Create Job' }}</button>
+    <button type="button" *ngIf="editingJobId !== null" class="btn-cancel-edit" (click)="cancelEdit()">Cancel Edit</button>
   </form>
 
   <article class="card" *ngFor="let job of jobs">
     <h3>{{ job.title }}</h3>
     <p><strong>{{ job.companyName }}</strong></p>
-    <p>{{ job.location }} | {{ job.jobType }} | Status: {{ job.status }}</p>
+    <p>
+      {{ job.location }} | {{ job.jobType }} | Status:
+      <span
+        class="status-badge"
+        [class.status-active]="job.status === 'active'"
+        [class.status-closed]="job.status === 'closed'"
+        [class.status-filled]="job.status === 'filled'"
+      >
+        {{ job.status }}
+      </span>
+    </p>
     <div class="actions">
-      <button type="button" (click)="updateStatus(job.id, 'closed')">Close</button>
-      <button type="button" (click)="updateStatus(job.id, 'active')">Reopen</button>
-      <button type="button" (click)="updateStatus(job.id, 'filled')">Mark Filled</button>
-      <button type="button" (click)="delete(job.id)">Delete</button>
+      <button type="button" class="btn-edit" (click)="startEdit(job)">Edit</button>
+      <button type="button" class="btn-close" (click)="updateStatus(job.id, 'closed')">Close</button>
+      <button type="button" class="btn-reopen" (click)="updateStatus(job.id, 'active')">Reopen</button>
+      <button type="button" class="btn-filled" (click)="updateStatus(job.id, 'filled')">Mark Filled</button>
+      <button type="button" class="btn-delete" (click)="delete(job.id)">Delete</button>
     </div>
   </article>
 </section>

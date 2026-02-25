@@ -72,12 +72,24 @@ export class ApplicantsComponent implements OnInit {
 
   setStatus(applicationId: number, status: 'Shortlisted' | 'Rejected' | 'Under Review'): void {
     const comment = window.prompt('Optional comment:') ?? undefined;
+    const previousStatus = this.allApplications.find((application) => application.id === applicationId)?.status;
+
+    this.allApplications = this.allApplications.map((application) =>
+      application.id === applicationId ? { ...application, status } : application
+    );
+    this.applyFilters();
+
     this.applicationService.updateStatus(applicationId, status, comment).subscribe({
       next: () => {
         this.statusMessage = `Application moved to ${status}.`;
-        this.search();
       },
       error: () => {
+        if (previousStatus) {
+          this.allApplications = this.allApplications.map((application) =>
+            application.id === applicationId ? { ...application, status: previousStatus } : application
+          );
+          this.applyFilters();
+        }
         this.statusMessage = `Failed to change status to ${status}. Please try again.`;
       }
     });
@@ -92,7 +104,10 @@ export class ApplicantsComponent implements OnInit {
     this.applicationService.addNote(applicationId, note).subscribe({
       next: () => {
         this.statusMessage = 'Internal note saved.';
-        this.search();
+        this.allApplications = this.allApplications.map((application) =>
+          application.id === applicationId ? { ...application, note } : application
+        );
+        this.applyFilters();
       },
       error: () => {
         this.statusMessage = 'Failed to save internal note.';

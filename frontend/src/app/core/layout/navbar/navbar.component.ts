@@ -10,6 +10,7 @@ import { NotificationService } from '../../../services/notification.service';
 })
 export class NavbarComponent {
   unreadCount = 0;
+  profileMenuOpen = false;
 
   constructor(
     public readonly authService: AuthService,
@@ -29,8 +30,19 @@ export class NavbarComponent {
   }
 
   logout(): void {
+    this.profileMenuOpen = false;
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  toggleProfileMenu(): void {
+    this.profileMenuOpen = !this.profileMenuOpen;
+  }
+
+  openProfile(): void {
+    this.profileMenuOpen = false;
+    const route = this.authService.getRole() === 'seeker' ? '/seeker/profile' : '/employer/dashboard';
+    this.router.navigate([route]);
   }
 
   get showGuestAuthLinks(): boolean {
@@ -43,6 +55,10 @@ export class NavbarComponent {
 
   get showAuthActions(): boolean {
     return this.authService.isLoggedIn() || this.showGuestAuthLinks;
+  }
+
+  get isForgotPasswordRoute(): boolean {
+    return this.normalizeUrl(this.router.url) === '/forgot-password';
   }
 
   private normalizeUrl(url: string): string {

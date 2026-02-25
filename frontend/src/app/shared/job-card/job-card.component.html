@@ -6,7 +6,7 @@
   <p>Skills: {{ job.skills.join(', ') }}</p>
   <div class="actions">
     <button type="button" (click)="favorite.emit(job)">{{ isFavorite ? 'Unsave' : 'Save' }}</button>
-    <button type="button" [disabled]="!canApply" (click)="apply.emit(job)">
+    <button type="button" class="apply-btn" [class.applied-btn]="!canApply" [disabled]="!canApply" (click)="apply.emit(job)">
       {{ canApply ? 'Apply' : 'Applied' }}
     </button>
   </div>

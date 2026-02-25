@@ -118,7 +118,6 @@ public class AuthService {
         response.fullName = jobSeekerProfileRepo.findByUser_UserId(user.getUserId())
                 .map(JobSeekerProfile::getFullName)
                 .or(() -> employerProfileRepo.findByUser_UserId(user.getUserId()).map(EmployerProfile::getContactName))
-                .or(() -> employerProfileRepo.findByUser_UserId(user.getUserId()).map(EmployerProfile::getCompanyName))
                 .filter(name -> name != null && !name.isBlank())
                 .orElse(user.getUsername());
         return response;
