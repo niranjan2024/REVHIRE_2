@@ -8,9 +8,11 @@ import { NavbarComponent } from './core/layout/navbar/navbar.component';
 import { ApplicantsComponent } from './employer/applicants/applicants.component';
 import { DashboardComponent } from './employer/dashboard/dashboard.component';
 import { JobPostingsComponent } from './employer/job-postings/job-postings.component';
+import { EmployerProfileComponent } from './employer/profile/profile.component';
 import { NotificationCenterComponent } from './notifications/notification-center/notification-center.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ApplicationsComponent } from './seeker/applications/applications.component';
@@ -28,12 +30,14 @@ import { JobCardComponent } from './shared/job-card/job-card.component';
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    ChangePasswordComponent,
     JobSearchComponent,
     ApplicationsComponent,
     ProfileComponent,
     ResumeBuilderComponent,
     FavoritesComponent,
     DashboardComponent,
+    EmployerProfileComponent,
     JobPostingsComponent,
     ApplicantsComponent,
     NotificationCenterComponent,

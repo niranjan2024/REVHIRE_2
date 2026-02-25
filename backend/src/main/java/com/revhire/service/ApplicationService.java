@@ -49,6 +49,7 @@ public class ApplicationService {
                 job.getJobId(),
                 user.getUserId(),
                 "WITHDRAWN");
+
         if (alreadyApplied) {
             throw new BusinessException("You have already applied for this job.");
         }
@@ -62,9 +63,6 @@ public class ApplicationService {
 
         Application savedApp = appRepo.save(app);
 
-        log.info("Application created with applicationId={}",
-                savedApp.getApplicationId());
-
         if (job.getEmployer() != null) {
             notificationService.notify(
                     job.getEmployer(),
@@ -76,7 +74,6 @@ public class ApplicationService {
     }
 
     public List<Application> getApplicationsByJob(Long jobId) {
-        log.info("Fetching applications for jobId={}", jobId);
         List<Application> applications = appRepo.findByJob_JobId(jobId);
         applications.forEach(this::attachSeekerDetails);
         return applications;
@@ -85,27 +82,15 @@ public class ApplicationService {
     @Transactional
     public void shortlistApplication(Long applicationId) {
 
-        log.info("Shortlisting applicationId={}", applicationId);
-
         Application app = appRepo.findById(applicationId)
-                .orElseThrow(() -> {
-                    log.error("Application not found for id={}", applicationId);
-                    return new BusinessException("Application not found");
-                });
+                .orElseThrow(() -> new BusinessException("Application not found"));
 
         app.setStatus("SHORTLISTED");
-
-        log.info("Application {} shortlisted for job '{}'",
-                applicationId,
-                app.getJob().getTitle());
 
         notificationService.notify(
                 app.getUser(),
                 "You have been shortlisted for job: " + app.getJob().getTitle()
         );
-
-        log.info("Notification sent to userId={}",
-                app.getUser().getUserId());
 
         appRepo.save(app);
     }
@@ -116,9 +101,11 @@ public class ApplicationService {
                 .orElseThrow(() -> new BusinessException("Application not found"));
 
         app.setStatus("UNDER_REVIEW");
+
         if (comment != null && !comment.isBlank()) {
             app.setEmployerComment(comment);
         }
+
         appRepo.save(app);
     }
 
@@ -136,6 +123,7 @@ public class ApplicationService {
         app.setStatus("REJECTED");
         app.setEmployerComment(comment);
         app.setStatusReason(comment);
+
         appRepo.save(app);
 
         notificationService.notify(
@@ -164,6 +152,7 @@ public class ApplicationService {
         app.setStatus("WITHDRAWN");
         app.setStatusReason(reason);
         app.setWithdrawnAt(LocalDateTime.now());
+
         appRepo.save(app);
 
         if (app.getJob().getEmployer() != null) {
@@ -196,29 +185,36 @@ public class ApplicationService {
                 .map(profile -> profile.getExperience() >= minExperience)
                 .orElse(false);
     }
-
+    
     private boolean matchesEducation(Long userId, String education) {
         Optional<Resume> resume = resumeRepo.findByUser_UserId(userId);
-        return resume.map(value ->
-                value.getDegree() != null &&
-                        value.getDegree().toLowerCase(Locale.ROOT).contains(education.toLowerCase(Locale.ROOT))
+
+        return resume.map(r ->
+                r.getEducation() != null &&
+                        r.getEducation().toLowerCase(Locale.ROOT)
+                                .contains(education.toLowerCase(Locale.ROOT))
         ).orElse(false);
     }
 
     private boolean matchesSkill(Long userId, String skill) {
         Optional<Resume> resume = resumeRepo.findByUser_UserId(userId);
-        return resume.map(value ->
-                value.getSkills() != null &&
-                        value.getSkills().stream()
-                                .anyMatch(s -> s != null && s.toLowerCase(Locale.ROOT).contains(skill.toLowerCase(Locale.ROOT)))
+
+        return resume.map(r ->
+                r.getSkills() != null &&
+                        r.getSkills().stream()
+                                .anyMatch(s -> s != null &&
+                                        s.toLowerCase(Locale.ROOT)
+                                                .contains(skill.toLowerCase(Locale.ROOT)))
         ).orElse(false);
     }
 
     private void attachSeekerDetails(Application application) {
-        Long userId = application.getUser() != null ? application.getUser().getUserId() : null;
-        if (userId == null) {
-            return;
-        }
+
+        Long userId = application.getUser() != null
+                ? application.getUser().getUserId()
+                : null;
+
+        if (userId == null) return;
 
         jobSeekerProfileRepo.findByUser_UserId(userId).ifPresent(profile -> {
             application.setSeekerExperienceYears(profile.getExperience());
@@ -231,5 +227,4 @@ public class ApplicationService {
             }
         });
     }
-
 }

@@ -24,6 +24,10 @@ public class EmployerService {
         User user = userRepo.findById(req.userId)
                 .orElseThrow(() -> new BusinessException("Employer not found"));
 
+        user.setEmail(req.email);
+        user.setMobileNumber(req.mobileNumber);
+        userRepo.save(user);
+
         EmployerProfile profile = employerProfileRepo.findByUser_UserId(req.userId)
                 .orElseGet(() -> {
                     EmployerProfile value = new EmployerProfile();
@@ -38,5 +42,30 @@ public class EmployerService {
         profile.setWebsite(req.website);
         profile.setCompanyLocation(req.companyLocation);
         employerProfileRepo.save(profile);
+    }
+
+    public EmployerProfileRequest getCompanyProfile(Long userId) {
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new BusinessException("Employer not found"));
+
+        EmployerProfile profile = employerProfileRepo.findByUser_UserId(userId)
+                .orElseGet(() -> {
+                    EmployerProfile value = new EmployerProfile();
+                    value.setUser(user);
+                    value.setContactName(user.getUsername());
+                    return value;
+                });
+
+        EmployerProfileRequest response = new EmployerProfileRequest();
+        response.userId = userId;
+        response.email = user.getEmail();
+        response.mobileNumber = user.getMobileNumber();
+        response.companyName = profile.getCompanyName();
+        response.industry = profile.getIndustry();
+        response.companySize = profile.getCompanySize();
+        response.companyDescription = profile.getCompanyDescription();
+        response.website = profile.getWebsite();
+        response.companyLocation = profile.getCompanyLocation();
+        return response;
     }
 }

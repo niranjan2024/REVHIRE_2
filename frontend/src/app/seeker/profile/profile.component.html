@@ -1,11 +1,11 @@
 <section class="card">
-  <h2>Profile</h2>
+  <h2>Complete Profile</h2>
 
   <div class="profile-header">
     <div class="avatar-wrap">
       <img *ngIf="profileImageDataUrl; else defaultAvatar" [src]="profileImageDataUrl" alt="Profile image" class="avatar" />
       <ng-template #defaultAvatar>
-        <div class="avatar avatar-fallback">??</div>
+        <div class="avatar avatar-fallback">U</div>
       </ng-template>
     </div>
     <label class="upload-label">
@@ -15,17 +15,15 @@
   </div>
 
   <form [formGroup]="form" (ngSubmit)="save()" class="form">
-    <label>Username <input formControlName="username" /></label>
+    <label>Username <input formControlName="username" readonly /></label>
     <label>Full Name <input formControlName="name" /></label>
     <label>Email <input formControlName="email" /></label>
     <label>Mobile Number <input formControlName="phone" /></label>
     <label>Location <input formControlName="location" /></label>
-    <label>User Status <input formControlName="currentEmploymentStatus" /></label>
     <label>Skills (comma separated) <input formControlName="skills" /></label>
     <label>Education (comma separated) <input formControlName="education" /></label>
     <label>Experience (comma separated) <input formControlName="experience" /></label>
     <label>Certifications (comma separated) <input formControlName="certifications" /></label>
-    <label>Resume Skills <input formControlName="resumeSkills" /></label>
     <button type="submit">Save Profile</button>
   </form>
   <p class="message" *ngIf="message">{{ message }}</p>

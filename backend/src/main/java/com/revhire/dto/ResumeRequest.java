@@ -6,19 +6,9 @@ public class ResumeRequest {
 
     public Long userId;
     public String objective;
-
-    // Education
-    public String degree;
-    public String institution;
-    public String startYear;
-    public String endYear;
-
-    // Experience
-    public String jobTitle;
-    public String company;
-    public String expStartDate;
-    public String expEndDate;
-
-    // Skills
+    public List<String> education;
+    public List<String> experience;
     public List<String> skills;
+    public List<String> projects;
+    public List<String> certifications;
 }

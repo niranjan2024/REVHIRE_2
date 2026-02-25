@@ -48,6 +48,19 @@
   color: #1f2937;
 }
 
+.btn-view-resume {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+pre {
+  white-space: pre-wrap;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.7rem;
+}
+
 .status-badge {
   padding: 0.15rem 0.5rem;
   border-radius: 999px;

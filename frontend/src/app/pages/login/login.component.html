@@ -20,8 +20,32 @@
       </label>
 
       <button type="submit">Login</button>
-      <a routerLink="/forgot-password" class="forgot-link">Forgot Password?</a>
+      <button type="button" class="forgot-link-btn" (click)="toggleForgotPassword()">
+        {{ showForgotPassword ? 'Close Forgot Password' : 'Forgot Password?' }}
+      </button>
       <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
     </form>
+
+    <section class="forgot-panel" *ngIf="showForgotPassword">
+      <h3>Reset Password</h3>
+      <form [formGroup]="forgotIdentityForm" (ngSubmit)="fetchSecurityQuestion()" class="form">
+        <label for="fp-identity">Username or Email</label>
+        <input id="fp-identity" formControlName="usernameOrEmail" type="text" placeholder="Enter username or email" />
+        <button type="submit">Get Security Question</button>
+      </form>
+
+      <div *ngIf="securityQuestion">
+        <p><strong>Security Question:</strong> {{ securityQuestion }}</p>
+        <form [formGroup]="resetForm" (ngSubmit)="resetPassword()" class="form">
+          <label>Answer <input formControlName="answer" type="text" /></label>
+          <label>New Password <input formControlName="newPassword" type="password" /></label>
+          <label>Confirm Password <input formControlName="confirmPassword" type="password" /></label>
+          <button type="submit">Reset Password</button>
+        </form>
+      </div>
+
+      <p class="error" *ngIf="forgotErrorMessage">{{ forgotErrorMessage }}</p>
+      <p class="success" *ngIf="forgotSuccessMessage">{{ forgotSuccessMessage }}</p>
+    </section>
   </div>
 </section>

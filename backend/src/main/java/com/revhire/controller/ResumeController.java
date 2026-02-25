@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/resume")
-@PreAuthorize("hasRole('JOB_SEEKER')")
 public class ResumeController {
 
     private final ResumeService resumeService;
@@ -22,6 +21,7 @@ public class ResumeController {
 
     //  CREATE / UPDATE RESUME
     @PostMapping
+    @PreAuthorize("hasRole('JOB_SEEKER')")
     public ResponseEntity<String> saveResume(@RequestBody ResumeRequest request, Authentication authentication) {
         validateCurrentUser(authentication, request.userId);
         resumeService.saveResume(request);
@@ -30,8 +30,15 @@ public class ResumeController {
 
     //  GET RESUME BY USER
     @GetMapping("/user/{userId}")
+    @PreAuthorize("hasRole('JOB_SEEKER')")
     public ResponseEntity<?> getResume(@PathVariable Long userId, Authentication authentication) {
         validateCurrentUser(authentication, userId);
+        return ResponseEntity.ok(resumeService.getResumeByUser(userId));
+    }
+
+    @GetMapping("/employer/user/{userId}")
+    @PreAuthorize("hasRole('EMPLOYER')")
+    public ResponseEntity<?> getResumeForEmployer(@PathVariable Long userId) {
         return ResponseEntity.ok(resumeService.getResumeByUser(userId));
     }
 

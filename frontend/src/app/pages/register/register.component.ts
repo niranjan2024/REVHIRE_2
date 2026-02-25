@@ -19,8 +19,8 @@ export class RegisterComponent {
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).+$/)]],
+    confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
     securityQuestion: ['', Validators.required],
     securityAnswer: ['', Validators.required],
     role: ['', Validators.required],
@@ -54,10 +54,10 @@ export class RegisterComponent {
         this.errorMessage = 'Mobile number must be exactly 10 digits.';
       } else if (this.form.get('email')?.hasError('email')) {
         this.errorMessage = 'Please enter a valid email address.';
-      } else if (this.form.get('password')?.hasError('minlength')) {
-        this.errorMessage = 'Password must be at least 6 characters.';
+      } else if (this.form.get('password')?.hasError('minlength') || this.form.get('password')?.hasError('pattern')) {
+        this.errorMessage = 'Password must include uppercase, lowercase, number, special character and be at least 8 characters.';
       } else if (this.form.get('confirmPassword')?.hasError('minlength')) {
-        this.errorMessage = 'Confirm password must be at least 6 characters.';
+        this.errorMessage = 'Confirm password must be at least 8 characters.';
       } else if (this.form.get('role')?.hasError('required')) {
         this.errorMessage = 'Please choose your role.';
       } else if (this.form.get('securityQuestion')?.hasError('required')) {

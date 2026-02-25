@@ -33,9 +33,19 @@ public class JobSeekerService {
                     return value;
                 });
 
+        if (req.email != null)
+            user.setEmail(req.email);
+
+        if (req.phone != null)
+            user.setMobileNumber(req.phone);
+
+        userRepo.save(user);
+
         profile.setFullName(req.fullName);
+        profile.setEmail(req.email);
         profile.setPhone(req.phone);
         profile.setLocation(req.location);
+        profile.setEmploymentStatus(req.employmentStatus);
         profile.setExperience(req.experience);
 
         jobSeekerProfileRepo.save(profile);
@@ -63,6 +73,31 @@ public class JobSeekerService {
             profile.setExperience(req.experience);
 
         jobSeekerProfileRepo.save(profile);
+    }
+
+    public JobSeekerProfileRequest getProfile(Long userId) {
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new BusinessException("User not found"));
+
+        JobSeekerProfile profile = jobSeekerProfileRepo.findByUser_UserId(userId)
+                .orElseGet(() -> {
+                    JobSeekerProfile value = new JobSeekerProfile();
+                    value.setUser(user);
+                    value.setFullName(user.getUsername());
+                    value.setEmail(user.getEmail());
+                    value.setPhone(user.getMobileNumber());
+                    return value;
+                });
+
+        JobSeekerProfileRequest response = new JobSeekerProfileRequest();
+        response.userId = userId;
+        response.fullName = profile.getFullName() != null ? profile.getFullName() : user.getUsername();
+        response.email = profile.getEmail() != null ? profile.getEmail() : user.getEmail();
+        response.phone = profile.getPhone() != null ? profile.getPhone() : user.getMobileNumber();
+        response.location = profile.getLocation();
+        response.employmentStatus = profile.getEmploymentStatus();
+        response.experience = profile.getExperience();
+        return response;
     }
 
 }

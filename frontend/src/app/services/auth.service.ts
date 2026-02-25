@@ -10,6 +10,10 @@ interface LoginResponse {
   username: string;
   role: string;
   fullName?: string;
+  email?: string;
+  mobileNumber?: string;
+  location?: string;
+  employmentStatus?: string;
 }
 
 export interface RegisterPayload {
@@ -57,10 +61,11 @@ export class AuthService {
           role,
           username: response.username || '',
           name: displayName,
-          email: '',
+          email: response.email || '',
           password,
-          phone: '',
-          location: '',
+          phone: response.mobileNumber || '',
+          location: response.location || '',
+          currentEmploymentStatus: response.employmentStatus || '',
           skills: [],
           education: [],
           experience: [],
@@ -143,16 +148,34 @@ export class AuthService {
     });
   }
 
-  getSecurityQuestion(username: string) {
-    return this.http.post(`${API_BASE_URL}/forgot-password`, { username }, { responseType: 'text' });
+  getSecurityQuestion(usernameOrEmail: string) {
+    return this.http.post(`${API_BASE_URL}/forgot-password`, { username: usernameOrEmail }, { responseType: 'text' });
   }
 
-  resetPassword(username: string, answer: string, newPassword: string) {
+  resetPassword(usernameOrEmail: string, answer: string, newPassword: string) {
     return this.http.post(
       `${API_BASE_URL}/reset-password`,
-      { username, answer, newPassword },
+      { username: usernameOrEmail, answer, newPassword },
       { responseType: 'text' }
     );
+  }
+
+  changePassword(oldPassword: string, newPassword: string) {
+    const currentUser = this.getCurrentUser();
+    if (!currentUser?.username) {
+      return of(false);
+    }
+
+    return this.http
+      .put(
+        `${API_BASE_URL}/change-password`,
+        { username: currentUser.username, oldPassword, newPassword },
+        { responseType: 'text' }
+      )
+      .pipe(
+        map(() => true),
+        catchError(() => of(false))
+      );
   }
 
   getCurrentUser(): UserModel | null {

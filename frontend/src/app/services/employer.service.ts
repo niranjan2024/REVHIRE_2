@@ -1,6 +1,20 @@
-﻿import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { CompanyModel } from '../models/company.model';
+import { API_BASE_URL } from './config/api.config';
+
+export interface EmployerProfilePayload {
+  userId: number;
+  email: string;
+  mobileNumber: string;
+  companyName: string;
+  industry: string;
+  companySize: string;
+  companyDescription: string;
+  website: string;
+  companyLocation: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +23,16 @@ export class EmployerService {
   private companiesSubject = new BehaviorSubject<CompanyModel[]>([]);
 
   companies$ = this.companiesSubject.asObservable();
+
+  constructor(private readonly http: HttpClient) {}
+
+  getCompanyProfile(userId: number): Observable<EmployerProfilePayload> {
+    return this.http.get<EmployerProfilePayload>(`${API_BASE_URL}/employer/company-profile/${userId}`);
+  }
+
+  updateCompanyProfile(payload: EmployerProfilePayload): Observable<void> {
+    return this.http.put(`${API_BASE_URL}/employer/company-profile`, payload).pipe(map(() => void 0));
+  }
 
   registerCompany(company: Omit<CompanyModel, 'id' | 'ownerUserId'>, ownerUserId: number): CompanyModel {
     const newCompany: CompanyModel = {

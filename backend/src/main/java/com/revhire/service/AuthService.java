@@ -33,7 +33,7 @@ public class AuthService {
     public void register(RegisterRequest req) {
 
         if (req.password == null || !InputValidator.isStrongPassword(req.password))
-            throw new BusinessException("Password must be at least 6 characters");
+            throw new BusinessException("Password must have uppercase, lowercase, number, special character and minimum 8 characters");
 
         if (req.confirmPassword == null || !req.password.equals(req.confirmPassword))
             throw new BusinessException("Password and confirm password do not match");
@@ -115,25 +115,40 @@ public class AuthService {
         response.userId = user.getUserId();
         response.username = user.getUsername();
         response.role = user.getRole();
+        response.email = user.getEmail();
+        response.mobileNumber = user.getMobileNumber();
         response.fullName = jobSeekerProfileRepo.findByUser_UserId(user.getUserId())
                 .map(JobSeekerProfile::getFullName)
                 .or(() -> employerProfileRepo.findByUser_UserId(user.getUserId()).map(EmployerProfile::getContactName))
                 .filter(name -> name != null && !name.isBlank())
                 .orElse(user.getUsername());
+
+        jobSeekerProfileRepo.findByUser_UserId(user.getUserId()).ifPresent(profile -> {
+            response.location = profile.getLocation();
+            response.employmentStatus = profile.getEmploymentStatus();
+            if (profile.getEmail() != null && !profile.getEmail().isBlank()) {
+                response.email = profile.getEmail();
+            }
+            if (profile.getPhone() != null && !profile.getPhone().isBlank()) {
+                response.mobileNumber = profile.getPhone();
+            }
+        });
         return response;
     }
 
-    public String getSecurityQuestion(String username) {
+    public String getSecurityQuestion(String usernameOrEmail) {
 
-        User user = userRepo.findByUsername(username)
+        User user = userRepo.findByUsername(usernameOrEmail)
+                .or(() -> userRepo.findByEmail(usernameOrEmail))
                 .orElseThrow(() -> new BusinessException("User not found"));
 
         return user.getSecurityQuestion();
     }
 
-    public void resetPassword(String username, String answer, String newPassword) {
+    public void resetPassword(String usernameOrEmail, String answer, String newPassword) {
 
-        User user = userRepo.findByUsername(username)
+        User user = userRepo.findByUsername(usernameOrEmail)
+                .or(() -> userRepo.findByEmail(usernameOrEmail))
                 .orElseThrow(() -> new BusinessException("User not found"));
 
         if (!user.getSecurityAnswer().equals(answer))

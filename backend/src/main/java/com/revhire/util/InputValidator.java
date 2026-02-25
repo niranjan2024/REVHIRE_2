@@ -8,7 +8,8 @@ public class InputValidator {
     }
 
     public static boolean isStrongPassword(String password) {
-        return password != null && password.length() >= 6;
+        return password != null
+                && password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z\\d]).{8,}$");
     }
 
     public static boolean isValidMobileNumber(String mobileNumber) {

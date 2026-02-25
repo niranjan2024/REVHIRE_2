@@ -11,14 +11,36 @@ import { API_BASE_URL } from './config/api.config';
 export class ProfileService {
   constructor(private readonly http: HttpClient) {}
 
+  getProfile(userId: number): Observable<{
+    userId: number;
+    fullName: string;
+    email: string;
+    phone: string;
+    location: string;
+    employmentStatus: string;
+    experience: number;
+  }> {
+    return this.http.get<{
+      userId: number;
+      fullName: string;
+      email: string;
+      phone: string;
+      location: string;
+      employmentStatus: string;
+      experience: number;
+    }>(`${API_BASE_URL}/jobseeker/profile/${userId}`);
+  }
+
   updateProfile(user: UserModel, payload: Partial<UserModel>): Observable<UserModel> {
     const experienceYears = this.firstNumber(payload.experience?.[0] ?? user.experience[0]);
     return this.http
       .post(`${API_BASE_URL}/jobseeker/profile`, {
         userId: user.id,
         fullName: payload.name ?? user.name,
+        email: payload.email ?? user.email,
         phone: payload.phone ?? user.phone,
         location: payload.location ?? user.location,
+        employmentStatus: payload.currentEmploymentStatus ?? user.currentEmploymentStatus,
         experience: experienceYears
       })
       .pipe(
@@ -46,15 +68,11 @@ export class ProfileService {
       .post(`${API_BASE_URL}/resume`, {
         userId: user.id,
         objective,
-        degree: education[0] ?? '',
-        institution: '',
-        startYear: '',
-        endYear: '',
-        jobTitle: experience[0] ?? '',
-        company: '',
-        expStartDate: '',
-        expEndDate: '',
-        skills
+        education,
+        experience,
+        skills,
+        projects,
+        certifications
       })
       .pipe(
         map(() => ({

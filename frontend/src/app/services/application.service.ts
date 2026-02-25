@@ -34,6 +34,15 @@ interface BackendApplication {
   };
 }
 
+interface ResumeModel {
+  objective?: string;
+  education?: string;
+  experience?: string;
+  projects?: string;
+  certifications?: string;
+  skills?: string[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -59,15 +68,11 @@ export class ApplicationService {
           this.http.post(`${API_BASE_URL}/resume`, {
             userId: seeker.id,
             objective: seeker.resume?.objective ?? '',
-            degree: seeker.education?.[0] ?? '',
-            institution: '',
-            startYear: '',
-            endYear: '',
-            jobTitle: seeker.experience?.[0] ?? '',
-            company: '',
-            expStartDate: '',
-            expEndDate: '',
-            skills: seeker.skills ?? []
+            education: seeker.resume?.education ?? seeker.education ?? [],
+            experience: seeker.resume?.experience ?? seeker.experience ?? [],
+            skills: seeker.resume?.skills ?? seeker.skills ?? [],
+            projects: seeker.resume?.projects ?? [],
+            certifications: seeker.resume?.certifications ?? []
           })
         ),
         catchError(() => of(null)),
@@ -154,6 +159,10 @@ export class ApplicationService {
 
   addNote(applicationId: number, note: string): Observable<void> {
     return this.http.put(`${API_BASE_URL}/applications/note/${applicationId}`, { comment: note }).pipe(map(() => void 0));
+  }
+
+  getResumeForEmployer(userId: number): Observable<ResumeModel> {
+    return this.http.get<ResumeModel>(`${API_BASE_URL}/resume/employer/user/${userId}`);
   }
 
   private toFrontend(application: BackendApplication): ApplicationModel {

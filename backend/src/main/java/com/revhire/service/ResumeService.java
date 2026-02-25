@@ -29,15 +29,11 @@ public class ResumeService {
 
         resume.setUser(user);
         resume.setObjective(req.objective);
-        resume.setDegree(req.degree);
-        resume.setInstitution(req.institution);
-        resume.setStartYear(req.startYear);
-        resume.setEndYear(req.endYear);
-        resume.setJobTitle(req.jobTitle);
-        resume.setCompany(req.company);
-        resume.setExpStartDate(req.expStartDate);
-        resume.setExpEndDate(req.expEndDate);
+        resume.setEducation(join(req.education));
+        resume.setExperience(join(req.experience));
         resume.setSkills(req.skills);
+        resume.setProjects(join(req.projects));
+        resume.setCertifications(join(req.certifications));
 
         resumeRepo.save(resume);
     }
@@ -45,5 +41,12 @@ public class ResumeService {
     public Resume getResumeByUser(Long userId) {
         return resumeRepo.findByUser_UserId(userId)
                 .orElseThrow(() -> new BusinessException("Resume not found"));
+    }
+
+    private String join(java.util.List<String> items) {
+        if (items == null || items.isEmpty()) {
+            return "";
+        }
+        return String.join(", ", items);
     }
 }

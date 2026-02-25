@@ -6,4 +6,8 @@ public class LoginResponse {
     public String username;
     public String role;
     public String fullName;
+    public String email;
+    public String mobileNumber;
+    public String location;
+    public String employmentStatus;
 }

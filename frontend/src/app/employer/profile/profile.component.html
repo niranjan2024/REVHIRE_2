@@ -1,0 +1,44 @@
+<section class="profile-card">
+  <h2>Complete Profile</h2>
+
+  <form [formGroup]="profileForm" (ngSubmit)="saveCompanyProfile()" class="profile-grid">
+    <label>
+      Email
+      <input formControlName="email" />
+    </label>
+    <label>
+      Mobile Number
+      <input formControlName="mobileNumber" />
+    </label>
+    <label>
+      Company Name
+      <input formControlName="companyName" />
+    </label>
+    <label>
+      Industry
+      <input formControlName="industry" />
+    </label>
+    <label>
+      Company Size
+      <input formControlName="companySize" />
+    </label>
+    <label>
+      Website
+      <input formControlName="website" />
+    </label>
+    <label class="full-width">
+      Company Location
+      <input formControlName="companyLocation" />
+    </label>
+    <label class="full-width">
+      Company Description
+      <textarea formControlName="companyDescription"></textarea>
+    </label>
+
+    <div class="profile-actions">
+      <button type="submit">Save Profile</button>
+    </div>
+  </form>
+
+  <p class="profile-message" *ngIf="profileMessage">{{ profileMessage }}</p>
+</section>

@@ -35,7 +35,14 @@
       <button type="button" class="btn-review" (click)="setStatus(application.id, 'Under Review')">Under Review</button>
       <button type="button" class="btn-shortlist" (click)="setStatus(application.id, 'Shortlisted')">Shortlist</button>
       <button type="button" class="btn-reject" (click)="setStatus(application.id, 'Rejected')">Reject</button>
+      <button type="button" class="btn-view-resume" (click)="viewResume(application.seekerId)">View Resume</button>
       <button type="button" class="btn-note" (click)="saveNote(application.id)">Add Note</button>
     </div>
   </article>
+
+  <section class="card" *ngIf="resumePreview">
+    <h3>Candidate Resume</h3>
+    <pre>{{ resumePreview }}</pre>
+    <button type="button" class="btn-note" (click)="clearResumePreview()">Close Resume</button>
+  </section>
 </section>

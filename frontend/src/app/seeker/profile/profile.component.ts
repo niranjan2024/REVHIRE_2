@@ -13,17 +13,15 @@ export class ProfileComponent implements OnInit {
   profileImageDataUrl = '';
 
   form = this.fb.group({
-    username: [{ value: '', disabled: true }],
-    email: [{ value: '', disabled: true }],
+    username: [''],
+    email: [''],
     name: ['', Validators.required],
     phone: ['', Validators.required],
     location: ['', Validators.required],
-    currentEmploymentStatus: [''],
     skills: [''],
     education: [''],
     experience: [''],
-    certifications: [''],
-    resumeSkills: [{ value: '', disabled: true }]
+    certifications: ['']
   });
 
   constructor(
@@ -44,14 +42,32 @@ export class ProfileComponent implements OnInit {
       name: user.name,
       phone: user.phone,
       location: user.location,
-      currentEmploymentStatus: user.currentEmploymentStatus,
       skills: user.skills.join(', '),
       education: user.education.join(', '),
       experience: user.experience.join(', '),
-      certifications: user.certifications.join(', '),
-      resumeSkills: user.resume?.skills?.join(', ') ?? ''
+      certifications: user.certifications.join(', ')
     });
     this.profileImageDataUrl = user.profileImageDataUrl ?? '';
+
+    this.profileService.getProfile(user.id).subscribe({
+      next: (profile) => {
+        this.form.patchValue({
+          username: user.username ?? '',
+          name: profile.fullName ?? user.name,
+          email: profile.email ?? user.email,
+          phone: profile.phone ?? user.phone,
+          location: profile.location ?? user.location
+        });
+
+        this.authService.updateCurrentUser({
+          ...user,
+          name: profile.fullName ?? user.name,
+          email: profile.email ?? user.email,
+          phone: profile.phone ?? user.phone,
+          location: profile.location ?? user.location
+        });
+      }
+    });
   }
 
   save(): void {
@@ -64,16 +80,20 @@ export class ProfileComponent implements OnInit {
     this.profileService
       .updateProfile(user, {
         name: values.name ?? user.name,
+        email: values.email ?? user.email,
         phone: values.phone ?? user.phone,
         location: values.location ?? user.location,
-        currentEmploymentStatus: values.currentEmploymentStatus ?? user.currentEmploymentStatus,
         skills: this.toArray(values.skills),
         education: this.toArray(values.education),
         experience: this.toArray(values.experience),
         certifications: this.toArray(values.certifications)
       })
       .subscribe((updated) => {
-        this.authService.updateCurrentUser(updated);
+        this.authService.updateCurrentUser({
+          ...updated,
+          username: values.username ?? updated.username,
+          email: values.email ?? updated.email
+        });
         this.message = 'Profile updated successfully.';
       });
   }

@@ -5,7 +5,7 @@
     <ng-container *ngIf="authService.getRole() === 'seeker'">
       <a routerLink="/seeker/jobs" routerLinkActive="active">Jobs</a>
       <a routerLink="/seeker/applications" routerLinkActive="active">Applications</a>
-      <a routerLink="/seeker/profile" routerLinkActive="active">Profile</a>
+      <a routerLink="/seeker/profile" routerLinkActive="active">Complete Profile</a>
       <a routerLink="/seeker/resume" routerLinkActive="active">Resume</a>
       <a routerLink="/seeker/favorites" routerLinkActive="active">Favorites</a>
     </ng-container>
@@ -40,7 +40,8 @@
       </button>
 
       <div class="menu-box" *ngIf="profileMenuOpen">
-        <button type="button" class="menu-item" (click)="openProfile()">Profile</button>
+        <button type="button" class="menu-item" (click)="openProfile()">Complete Profile</button>
+        <button type="button" class="menu-item" (click)="openChangePassword()">Change Password</button>
         <button type="button" class="menu-item" (click)="logout()">Log Out</button>
       </div>
     </div>

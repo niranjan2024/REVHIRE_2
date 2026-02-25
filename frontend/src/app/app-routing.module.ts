@@ -6,11 +6,13 @@ import { roleGuard } from './guards/role.guard';
 import { ApplicantsComponent } from './employer/applicants/applicants.component';
 import { DashboardComponent } from './employer/dashboard/dashboard.component';
 import { JobPostingsComponent } from './employer/job-postings/job-postings.component';
+import { EmployerProfileComponent } from './employer/profile/profile.component';
 import { NotificationCenterComponent } from './notifications/notification-center/notification-center.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ApplicationsComponent } from './seeker/applications/applications.component';
 import { FavoritesComponent } from './seeker/favorites/favorites.component';
 import { JobSearchComponent } from './seeker/job-search/job-search.component';
@@ -22,6 +24,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [loggedOutGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [loggedOutGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'change-password', component: ChangePasswordComponent, canActivate: [authGuard] },
   { path: 'job-seeker-dashboard', redirectTo: 'seeker/jobs' },
   { path: 'employer-dashboard', redirectTo: 'employer/dashboard' },
   { path: 'register/seeker', redirectTo: 'register' },
@@ -59,6 +62,12 @@ const routes: Routes = [
   {
     path: 'employer/dashboard',
     component: DashboardComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { role: 'employer' }
+  },
+  {
+    path: 'employer/profile',
+    component: EmployerProfileComponent,
     canActivate: [authGuard, roleGuard],
     data: { role: 'employer' }
   },

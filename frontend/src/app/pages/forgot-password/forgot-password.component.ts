@@ -14,7 +14,7 @@ export class ForgotPasswordComponent {
   successMessage = '';
 
   usernameForm = this.fb.group({
-    username: ['', Validators.required]
+    usernameOrEmail: ['', Validators.required]
   });
 
   resetForm = this.fb.group({
@@ -37,8 +37,8 @@ export class ForgotPasswordComponent {
 
     this.errorMessage = '';
     this.successMessage = '';
-    const username = this.usernameForm.getRawValue().username ?? '';
-    this.authService.getSecurityQuestion(username).subscribe({
+    const usernameOrEmail = this.usernameForm.getRawValue().usernameOrEmail ?? '';
+    this.authService.getSecurityQuestion(usernameOrEmail).subscribe({
       next: (question) => {
         this.question = question;
       },
@@ -61,8 +61,8 @@ export class ForgotPasswordComponent {
       return;
     }
 
-    const username = this.usernameForm.getRawValue().username ?? '';
-    this.authService.resetPassword(username, value.answer ?? '', value.newPassword ?? '').subscribe({
+    const usernameOrEmail = this.usernameForm.getRawValue().usernameOrEmail ?? '';
+    this.authService.resetPassword(usernameOrEmail, value.answer ?? '', value.newPassword ?? '').subscribe({
       next: () => {
         this.successMessage = 'Password reset successful. Please login.';
         this.errorMessage = '';

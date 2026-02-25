@@ -41,8 +41,17 @@ export class NavbarComponent {
 
   openProfile(): void {
     this.profileMenuOpen = false;
-    const route = this.authService.getRole() === 'seeker' ? '/seeker/profile' : '/employer/dashboard';
-    this.router.navigate([route]);
+    if (this.authService.getRole() === 'seeker') {
+      this.router.navigate(['/seeker/profile']);
+      return;
+    }
+
+    this.router.navigate(['/employer/profile']);
+  }
+
+  openChangePassword(): void {
+    this.profileMenuOpen = false;
+    this.router.navigate(['/change-password']);
   }
 
   get showGuestAuthLinks(): boolean {

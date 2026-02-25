@@ -50,6 +50,14 @@ public class JobSeekerController {
         return ResponseEntity.ok("Profile updated successfully");
     }
 
+    @GetMapping("/profile/{userId}")
+    public ResponseEntity<JobSeekerProfileRequest> getProfile(
+            @PathVariable Long userId,
+            Authentication authentication) {
+        validateCurrentUser(authentication, userId);
+        return ResponseEntity.ok(jobSeekerService.getProfile(userId));
+    }
+
     @GetMapping("/jobs/search")
     public ResponseEntity<List<Job>> searchJobs(
             @RequestParam(required = false) String title,

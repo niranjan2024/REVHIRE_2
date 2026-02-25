@@ -92,6 +92,14 @@ public class EmployerController {
         return ResponseEntity.ok("Company profile updated");
     }
 
+    @GetMapping("/company-profile/{userId}")
+    public ResponseEntity<EmployerProfileRequest> getCompanyProfile(
+            @PathVariable Long userId,
+            Authentication authentication) {
+        validateCurrentUser(authentication, userId);
+        return ResponseEntity.ok(employerService.getCompanyProfile(userId));
+    }
+
     private void validateCurrentUser(Authentication authentication, Long userId) {
         Object principal = authentication != null ? authentication.getPrincipal() : null;
         if (!(principal instanceof AuthenticatedUser authenticatedUser) || !authenticatedUser.getUserId().equals(userId)) {

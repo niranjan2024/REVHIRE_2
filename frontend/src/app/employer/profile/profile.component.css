@@ -1,0 +1,47 @@
+.profile-card {
+  margin-top: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #fff;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.7rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+textarea {
+  min-height: 90px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.profile-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  padding: 0.45rem 0.9rem;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.profile-message {
+  margin-top: 0.7rem;
+  color: #166534;
+  font-weight: 500;
+}

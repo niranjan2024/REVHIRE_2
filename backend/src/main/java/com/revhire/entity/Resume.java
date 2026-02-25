@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "resumes")
+@Table(name = "resume_builder")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,21 +21,23 @@ public class Resume {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(name = "objective", columnDefinition = "TEXT")
     private String objective;
 
-    // Education
-    private String degree;
-    private String institution;
-    private String startYear;
-    private String endYear;
+    @Column(name = "education", columnDefinition = "TEXT")
+    private String education;
 
-    // Experience
-    private String jobTitle;
-    private String company;
-    private String expStartDate;
-    private String expEndDate;
+    @Column(name = "experience", columnDefinition = "TEXT")
+    private String experience;
 
-    // Skills
     @ElementCollection
+    @CollectionTable(name = "resume_builder_skills", joinColumns = @JoinColumn(name = "resume_id"))
+    @Column(name = "skill")
     private List<String> skills;
+
+    @Column(name = "projects", columnDefinition = "TEXT")
+    private String projects;
+
+    @Column(name = "certifications", columnDefinition = "TEXT")
+    private String certifications;
 }

@@ -54,7 +54,11 @@
 
       <ng-container *ngIf="!isEmployer">
         <input formControlName="location" type="text" placeholder="Location" />
-        <input formControlName="employmentStatus" type="text" placeholder="Employment Status" />
+        <select formControlName="employmentStatus">
+          <option value="" disabled>Employment Status</option>
+          <option value="Fresher">Fresher</option>
+          <option value="Experience">Experience</option>
+        </select>
       </ng-container>
 
       <ng-container *ngIf="isEmployer">

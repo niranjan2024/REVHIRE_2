@@ -15,6 +15,7 @@ export class ApplicantsComponent implements OnInit {
   applications: Array<ApplicationModel & { job?: JobModel }> = [];
   private allApplications: Array<ApplicationModel & { job?: JobModel }> = [];
   statusMessage = '';
+  resumePreview = '';
 
   filtersForm = this.fb.group({
     status: [''],
@@ -113,5 +114,32 @@ export class ApplicantsComponent implements OnInit {
         this.statusMessage = 'Failed to save internal note.';
       }
     });
+  }
+
+  viewResume(seekerId: number): void {
+    this.applicationService.getResumeForEmployer(seekerId).subscribe({
+      next: (resume) => {
+        const skills = (resume.skills ?? []).join(', ') || 'N/A';
+        const education = resume.education || 'N/A';
+        const experience = resume.experience || 'N/A';
+        const projects = resume.projects || 'N/A';
+        const certifications = resume.certifications || 'N/A';
+        this.resumePreview = [
+          `Objective: ${resume.objective || 'N/A'}`,
+          `Education: ${education}`,
+          `Experience: ${experience}`,
+          `Skills: ${skills}`,
+          `Projects: ${projects}`,
+          `Certifications: ${certifications}`
+        ].join('\n');
+      },
+      error: () => {
+        this.statusMessage = 'Resume not found for this candidate.';
+      }
+    });
+  }
+
+  clearResumePreview(): void {
+    this.resumePreview = '';
   }
 }
