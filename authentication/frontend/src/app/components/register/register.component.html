@@ -1,0 +1,67 @@
+<div class="auth-form">
+  <h1>Create Account</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input formControlName="username" placeholder="Username" />
+    <input formControlName="fullName" placeholder="Full Name" />
+    <input formControlName="email" placeholder="Email Address" />
+    <input formControlName="mobileNumber" placeholder="Mobile Number" />
+
+    <div class="field-with-button">
+      <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Password" />
+      <button type="button" class="mini-btn" (click)="togglePassword()">Show</button>
+    </div>
+    <div class="error" *ngIf="form.controls.password.invalid && form.controls.password.touched">
+      Password must include upper/lower case, number, and special character.
+    </div>
+
+    <div class="field-with-button">
+      <input [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirmPassword" placeholder="Confirm Password" />
+      <button type="button" class="mini-btn" (click)="toggleConfirmPassword()">Show</button>
+    </div>
+
+    <select formControlName="role">
+      <option value="" disabled>Choose your role</option>
+      <option value="JOB_SEEKER">Job Seeker</option>
+      <option value="EMPLOYER">Employer</option>
+    </select>
+
+    <select formControlName="securityQuestion">
+      <option value="" disabled>Choose security question</option>
+      <option value="What is your first school name?">What is your first school name?</option>
+      <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+      <option value="What city were you born in?">What city were you born in?</option>
+      <option value="What is your favorite movie?">What is your favorite movie?</option>
+    </select>
+    <input formControlName="securityAnswer" placeholder="Security Answer" />
+
+    <ng-container *ngIf="isEmployer; else jobSeekerFields">
+      <input formControlName="companyName" placeholder="Company Name" />
+      <input formControlName="industry" placeholder="Industry" />
+      <input formControlName="companySize" placeholder="Company Size" />
+      <textarea formControlName="companyDescription" placeholder="Company Description" rows="3"></textarea>
+      <input formControlName="website" placeholder="Website" />
+      <input formControlName="companyLocation" placeholder="Company Location" />
+    </ng-container>
+
+    <ng-template #jobSeekerFields>
+      <input formControlName="location" placeholder="Location" />
+
+      <select formControlName="employmentStatus">
+        <option value="" disabled>Employment Status</option>
+        <option value="FRESHER">Fresher</option>
+        <option value="EXPERIENCE">Experience</option>
+      </select>
+    </ng-template>
+
+    <div class="error" *ngIf="form.controls.confirmPassword.touched && form.value.password !== form.value.confirmPassword">
+      Password and confirm password do not match.
+    </div>
+
+    <div class="error" *ngIf="form.controls.mobileNumber.invalid && form.controls.mobileNumber.touched">
+      Mobile number must be 10-15 digits.
+    </div>
+
+    <button type="submit" class="primary-btn">Sign up</button>
+  </form>
+  <p class="feedback">{{ message }}</p>
+</div>
