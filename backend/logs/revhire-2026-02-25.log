@@ -1,0 +1,511 @@
+2026-02-25 07:13:35 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 8664 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 07:13:35 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 07:13:35 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 07:13:42 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 8.25 seconds (process running for 9.398)
+2026-02-25 07:17:18 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:29:21 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:29:21 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:35:58 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Applying for jobId=3 by userId=1
+2026-02-25 07:35:58 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Application created with applicationId=3
+2026-02-25 07:36:29 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:36:29 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:36:29 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:38:20 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:38:20 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:38:20 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:38:20 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:38:46 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:38:46 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:38:46 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:38:46 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:45:39 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Applying for jobId=5 by userId=1
+2026-02-25 07:45:39 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Application created with applicationId=4
+2026-02-25 07:45:55 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:45:55 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:45:55 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:45:55 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:45:55 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:45:58 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:45:58 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:45:58 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:45:58 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:45:58 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:48:13 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:48:13 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:48:13 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:48:13 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:48:13 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:49:33 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Applying for jobId=4 by userId=1
+2026-02-25 07:49:33 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Application created with applicationId=5
+2026-02-25 07:49:50 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:49:50 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:49:50 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:49:50 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:49:50 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:49:54 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:49:54 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:49:54 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:49:54 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:49:54 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:52:15 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:52:15 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:52:15 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:52:15 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:52:15 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:52:23 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:52:23 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:52:23 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:52:23 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:52:23 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:54:10 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:54:10 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:54:10 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:54:10 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:54:10 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:54:45 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:54:45 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:54:45 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:54:45 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:54:45 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:54:51 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:54:51 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:54:51 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:54:51 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:54:51 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:55:10 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:55:10 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:55:10 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:55:10 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:55:10 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:55:15 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:55:15 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:55:15 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:55:15 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:55:15 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:57:33 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:57:33 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:57:33 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:57:33 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:57:33 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:58:04 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:58:04 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:58:04 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:58:04 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:58:04 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:58:22 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:58:22 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:58:22 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:58:22 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:58:22 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:59:37 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:59:37 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:59:37 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:59:37 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 07:59:37 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:59:41 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 07:59:41 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 07:59:41 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 07:59:41 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 07:59:41 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:00:05 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:00:05 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:00:05 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:00:05 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:00:05 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:00:18 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Shortlisting applicationId=3
+2026-02-25 08:00:18 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Application 3 shortlisted for job 'Python Developer'
+2026-02-25 08:00:18 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Notification sent to userId=1
+2026-02-25 08:00:21 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:00:21 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:00:21 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:00:21 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:00:21 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:00:41 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:00:41 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:00:41 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:00:41 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:00:41 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:00:56 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:00:56 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:00:56 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:00:56 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:00:56 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:02:57 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:02:57 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:02:57 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:02:57 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:02:57 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:02:57 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:02:57 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:02:57 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:02:57 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:02:57 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:03:40 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:03:40 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:03:40 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:03:40 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:03:40 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:03:51 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:03:51 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:03:51 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:03:51 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:03:51 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:04:06 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:04:06 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:04:06 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:04:06 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:04:06 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:07:49 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:07:49 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:07:49 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:07:49 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:07:49 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:08:10 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:08:10 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:08:10 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:08:10 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:08:10 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 08:08:20 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 08:08:20 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 08:08:20 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 08:08:20 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 08:08:20 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 10:10:39 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 10:10:39 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 10:10:39 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 10:10:39 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 10:10:39 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 10:11:34 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 10:11:34 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 10:11:34 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 10:11:34 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 10:11:34 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 10:48:16 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 11168 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 10:48:16 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 10:48:16 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 10:48:24 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 8.615 seconds (process running for 9.574)
+2026-02-25 10:49:40 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 10:49:40 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 10:49:40 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 10:49:40 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 10:49:40 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 10:50:27 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 10:50:27 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 10:50:27 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 10:50:27 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 10:50:27 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 10:50:58 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 10:50:58 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 10:50:58 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 10:50:58 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 10:50:58 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 10:51:00 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 10:51:00 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 10:51:00 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 10:51:00 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 10:51:00 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 10:51:20 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Shortlisting applicationId=1
+2026-02-25 10:51:20 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Application 1 shortlisted for job 'Java Developer'
+2026-02-25 10:51:20 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Notification sent to userId=1
+2026-02-25 10:52:43 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 10:52:43 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 10:52:43 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 10:52:43 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 10:52:43 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:09:46 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:09:46 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:09:46 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:09:46 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:09:46 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:12:16 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:12:16 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:12:16 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:12:16 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:12:16 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:14:09 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:14:09 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:14:09 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:14:09 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:14:09 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:14:33 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:14:33 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:14:33 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:14:33 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:14:33 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:17:30 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:17:30 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:17:30 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:17:30 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:17:30 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:17:40 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:17:40 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:17:40 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:17:40 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:17:40 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:18:03 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:18:03 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:18:03 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:18:03 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:18:03 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:19:44 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:19:44 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:19:44 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:19:44 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:19:44 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:20:26 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:20:26 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:20:26 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:20:26 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:20:27 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:21:13 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Shortlisting applicationId=1
+2026-02-25 11:21:13 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Application 1 shortlisted for job 'Java Developer'
+2026-02-25 11:21:13 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Notification sent to userId=1
+2026-02-25 11:21:17 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:21:17 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:21:17 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:21:17 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:21:17 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:22:12 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:22:12 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:22:12 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:22:12 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:22:12 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:31:45 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:31:45 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:31:45 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:31:45 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:31:45 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:35:16 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:35:16 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:35:16 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:35:16 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:35:16 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:35:40 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:35:40 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:35:40 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:35:40 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:35:40 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:43:33 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 1672 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 11:43:33 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 11:43:33 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 11:43:38 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 5.523 seconds (process running for 6.835)
+2026-02-25 11:44:47 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:44:47 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:44:47 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:44:47 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:44:47 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:44:52 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:44:52 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=1
+2026-02-25 11:44:52 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:44:52 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=2
+2026-02-25 11:44:52 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:45:23 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:45:23 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:45:23 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:46:43 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:46:43 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:46:43 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:49:25 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:49:25 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:49:25 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:50:08 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:50:08 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:50:08 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:51:56 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:51:56 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:51:56 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:52:43 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 21868 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 11:52:43 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 11:52:43 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 11:52:48 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 5.436 seconds (process running for 6.154)
+2026-02-25 11:54:07 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:54:07 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:54:07 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:56:52 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:56:52 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:56:52 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:59:10 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:59:10 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:59:10 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:59:15 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:59:15 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:59:15 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:59:20 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:59:20 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:59:20 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:59:24 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:59:24 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:59:24 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:59:42 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:59:42 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 11:59:42 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:59:57 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 11:59:57 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 11:59:57 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:01:06 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:01:06 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:01:06 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:01:20 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:01:20 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:01:20 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:01:22 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:01:22 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:01:22 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:01:38 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:01:38 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:01:38 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:01:40 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:01:40 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:01:40 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:05:56 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:05:56 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:05:56 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:39:51 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:39:51 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:39:51 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:44:52 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:44:52 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:44:52 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:45:39 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:45:39 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:45:39 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:47:48 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:47:48 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:47:48 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:47:48 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 12:47:51 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 12:47:51 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 12:47:51 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 12:47:51 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:17:06 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:17:06 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:17:06 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:17:06 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:17:09 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:17:09 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:17:09 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:17:09 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:17:21 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:17:21 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:17:21 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:17:21 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:18:42 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:18:42 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:18:42 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:18:42 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:18:53 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:18:53 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:18:53 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:18:53 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:18:59 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:18:59 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:18:59 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:18:59 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:19:05 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:19:05 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:19:05 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:19:05 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:19:14 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:19:14 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:19:14 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:19:14 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:21:01 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:21:01 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:21:01 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:21:01 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:21:03 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:21:03 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:21:03 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:21:03 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:21:05 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:21:05 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:21:05 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:21:05 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:21:18 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:21:18 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:21:18 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:21:18 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:21:46 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:21:46 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:21:46 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:21:46 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:22:10 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:22:10 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:22:10 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:22:10 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:22:56 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:22:56 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:22:56 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:22:56 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:23:38 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:23:38 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:23:38 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:23:38 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:23:57 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:23:57 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:23:57 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:23:57 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:24:04 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:24:04 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:24:04 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 13:24:04 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:24:40 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 13:24:40 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 13:24:40 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 13:24:40 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 14:25:21 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 14:25:21 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 14:25:21 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 14:25:21 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 14:39:29 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 10540 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 14:39:29 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 14:39:29 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 14:39:34 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 5.381 seconds (process running for 6.194)
+2026-02-25 15:01:31 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 4124 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:01:31 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:01:31 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:01:37 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 6.128 seconds (process running for 6.939)
+2026-02-25 15:06:52 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 15:06:52 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 15:06:52 [http-nio-8080-exec-1] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 15:06:52 [http-nio-8080-exec-3] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 15:07:02 [http-nio-8080-exec-6] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 15:07:02 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 15:07:02 [http-nio-8080-exec-8] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 15:07:02 [http-nio-8080-exec-7] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 15:07:15 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Shortlisting applicationId=4
+2026-02-25 15:07:16 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Application 4 shortlisted for job 'Backend Java Developer'
+2026-02-25 15:07:16 [http-nio-8080-exec-5] INFO  com.revhire.service.ApplicationService - Notification sent to userId=1
+2026-02-25 15:07:18 [http-nio-8080-exec-9] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=5
+2026-02-25 15:07:18 [http-nio-8080-exec-2] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=3
+2026-02-25 15:07:18 [http-nio-8080-exec-10] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=6
+2026-02-25 15:07:18 [http-nio-8080-exec-4] INFO  com.revhire.service.ApplicationService - Fetching applications for jobId=4
+2026-02-25 15:42:21 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 6248 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:42:21 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:42:21 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:42:55 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 19148 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:42:55 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:42:55 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:45:24 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 17584 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:45:24 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:45:24 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:45:29 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 5.035 seconds (process running for 5.726)
+2026-02-25 15:47:02 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 14912 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:47:02 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:47:02 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:47:28 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 12816 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:47:28 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:47:28 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:48:45 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 15496 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:48:45 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:48:45 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:53:16 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 5580 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:53:16 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:53:16 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:53:41 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 7292 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:53:41 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:53:41 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:55:56 [main] INFO  com.revhire.RevHireApplication - Starting RevHireApplication using Java 21.0.9 with PID 8540 (C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend\target\classes started by Admin in C:\Users\Admin\Downloads\Telegram Desktop\RevHire\backend)
+2026-02-25 15:55:56 [main] DEBUG com.revhire.RevHireApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2026-02-25 15:55:56 [main] INFO  com.revhire.RevHireApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-25 15:56:01 [main] INFO  com.revhire.RevHireApplication - Started RevHireApplication in 4.708 seconds (process running for 5.344)
