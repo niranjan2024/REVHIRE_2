@@ -1,0 +1,19 @@
+<div class="auth-form">
+  <h1>Welcome Back</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Email</label>
+    <input formControlName="usernameOrEmail" placeholder="Enter your email" />
+
+    <label>Password</label>
+    <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Enter your password" />
+
+    <label class="checkbox-row">
+      <input type="checkbox" [checked]="showPassword" (change)="toggleShowPassword()" />
+      <span>Show password</span>
+    </label>
+
+    <button type="submit" class="primary-btn">Login</button>
+  </form>
+  <a class="forgot-link" routerLink="/forgot-password">Forgot Password?</a>
+  <p class="feedback">{{ message }}</p>
+</div>

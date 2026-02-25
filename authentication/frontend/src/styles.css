@@ -1,0 +1,269 @@
+:root {
+  --bg-a: #1f4c76;
+  --bg-b: #2a6b97;
+  --panel: #edeff2;
+  --ink: #1b2b4d;
+  --muted: #6f7482;
+  --line: #b9c6db;
+  --tab: #d7dde5;
+  --btn-a: #42b8ea;
+  --btn-b: #1d9fdb;
+  --brand-gold-a: #f8dc7f;
+  --brand-gold-b: #e0ab2a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  color: var(--ink);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255, 220, 140, 0.14), transparent 34%),
+    radial-gradient(circle at 86% 14%, rgba(95, 205, 255, 0.18), transparent 36%),
+    linear-gradient(140deg, rgba(17, 48, 82, 0.78), rgba(21, 86, 130, 0.74)),
+    url("assets/images/RevHire_Logindb.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 16px 32px;
+  position: relative;
+}
+
+.auth-shell {
+  width: min(820px, 100%);
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f2f4f8 0%, #e9edf3 100%);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  box-shadow:
+    0 22px 55px rgba(7, 19, 38, 0.44),
+    0 2px 0 rgba(255, 255, 255, 0.3) inset;
+}
+
+.background-brand {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 14px 10px;
+  background:
+    linear-gradient(90deg, rgba(13, 44, 79, 0.94), rgba(16, 69, 113, 0.94));
+  border-bottom: 2px solid #c9961d;
+  color: #f1c44f;
+  text-shadow:
+    0 0 14px rgba(255, 211, 95, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+  font-size: clamp(30px, 4.2vw, 46px);
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  z-index: 20;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.auth-tabs a {
+  text-align: center;
+  text-decoration: none;
+  color: #222a3a;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 14px 10px;
+  background: var(--tab);
+  border-bottom: 1px solid #cfd5df;
+}
+
+.auth-tabs a.active {
+  background: var(--panel);
+}
+
+.auth-content {
+  padding: 20px 26px 24px;
+}
+
+.auth-form {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.auth-container {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.auth-form h1 {
+  margin: 0 0 14px;
+  text-align: center;
+  color: #17376d;
+  font-size: clamp(30px, 3.2vw, 44px);
+  letter-spacing: 0.3px;
+}
+
+.auth-form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+  width: 100%;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  height: 50px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: #2b3344;
+  background: #f8fafc;
+  margin-bottom: 12px;
+}
+
+.auth-form input::placeholder {
+  color: #8b9099;
+}
+
+.auth-form textarea {
+  min-height: 70px;
+  height: auto;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.checkbox-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin: 2px 0 20px;
+  color: #374154;
+}
+
+.checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.primary-btn {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--btn-a), var(--btn-b));
+}
+
+.forgot-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 16px;
+  color: #2b57c8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.feedback {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.error {
+  color: #b32121;
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+  .auth-tabs a {
+    font-size: 16px;
+    padding: 16px 10px;
+  }
+
+  .background-brand {
+    padding: 12px 10px;
+    font-size: clamp(24px, 8vw, 34px);
+  }
+
+  .auth-content {
+    padding: 20px 20px 24px;
+  }
+
+  .auth-form h1 {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+
+  .auth-form label {
+    font-size: 13px;
+  }
+
+  .auth-form input,
+  .auth-form select,
+  .auth-form textarea {
+    font-size: 14px;
+    height: 46px;
+    border-radius: 12px;
+  }
+
+  .auth-form textarea {
+    min-height: 70px;
+    height: auto;
+  }
+
+  .checkbox-row {
+    font-size: 13px;
+  }
+
+  .primary-btn {
+    height: 46px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
+
+  .forgot-link {
+    font-size: 14px;
+  }
+}
+
+.field-with-button {
+  position: relative;
+}
+
+.field-with-button input {
+  padding-right: 82px;
+}
+
+.mini-btn {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  height: 34px;
+  min-width: 58px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f9fbff;
+  color: #213a6d;
+  font-size: 13px;
+  cursor: pointer;
+}
