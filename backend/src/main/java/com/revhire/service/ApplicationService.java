@@ -45,6 +45,14 @@ public class ApplicationService {
         log.info("Applying for jobId={} by userId={}",
                 job.getJobId(), user.getUserId());
 
+        boolean alreadyApplied = appRepo.existsByJob_JobIdAndUser_UserIdAndStatusNot(
+                job.getJobId(),
+                user.getUserId(),
+                "WITHDRAWN");
+        if (alreadyApplied) {
+            throw new BusinessException("You have already applied for this job.");
+        }
+
         Application app = new Application();
         app.setJob(job);
         app.setUser(user);
@@ -69,8 +77,9 @@ public class ApplicationService {
 
     public List<Application> getApplicationsByJob(Long jobId) {
         log.info("Fetching applications for jobId={}", jobId);
-
-        return appRepo.findByJob_JobId(jobId);
+        List<Application> applications = appRepo.findByJob_JobId(jobId);
+        applications.forEach(this::attachSeekerDetails);
+        return applications;
     }
 
     @Transactional
@@ -101,8 +110,22 @@ public class ApplicationService {
         appRepo.save(app);
     }
 
+    @Transactional
+    public void markUnderReview(Long applicationId, String comment) {
+        Application app = appRepo.findById(applicationId)
+                .orElseThrow(() -> new BusinessException("Application not found"));
+
+        app.setStatus("UNDER_REVIEW");
+        if (comment != null && !comment.isBlank()) {
+            app.setEmployerComment(comment);
+        }
+        appRepo.save(app);
+    }
+
     public List<Application> getApplicationsByUser(Long userId) {
-        return appRepo.findByUser_UserId(userId);
+        List<Application> applications = appRepo.findByUser_UserId(userId);
+        applications.forEach(this::attachSeekerDetails);
+        return applications;
     }
 
     @Transactional
@@ -119,6 +142,15 @@ public class ApplicationService {
                 app.getUser(),
                 "Your application was rejected for job: " + app.getJob().getTitle()
         );
+    }
+
+    @Transactional
+    public void addEmployerNote(Long applicationId, String note) {
+        Application app = appRepo.findById(applicationId)
+                .orElseThrow(() -> new BusinessException("Application not found"));
+
+        app.setEmployerComment(note);
+        appRepo.save(app);
     }
 
     @Transactional
@@ -180,6 +212,24 @@ public class ApplicationService {
                         value.getSkills().stream()
                                 .anyMatch(s -> s != null && s.toLowerCase(Locale.ROOT).contains(skill.toLowerCase(Locale.ROOT)))
         ).orElse(false);
+    }
+
+    private void attachSeekerDetails(Application application) {
+        Long userId = application.getUser() != null ? application.getUser().getUserId() : null;
+        if (userId == null) {
+            return;
+        }
+
+        jobSeekerProfileRepo.findByUser_UserId(userId).ifPresent(profile -> {
+            application.setSeekerExperienceYears(profile.getExperience());
+            application.setSeekerFullName(profile.getFullName());
+        });
+
+        resumeRepo.findByUser_UserId(userId).ifPresent(resume -> {
+            if (resume.getSkills() != null) {
+                application.setSeekerSkills(resume.getSkills());
+            }
+        });
     }
 
 }

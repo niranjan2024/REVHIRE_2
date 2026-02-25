@@ -70,6 +70,10 @@ export class AuthService {
   }
 
   logout(): void {
+    this.http.post(`${API_BASE_URL}/logout`, {}, { responseType: 'text' }).subscribe({
+      next: () => {},
+      error: () => {}
+    });
     this.currentUserSubject.next(null);
     localStorage.removeItem('revhire.currentUser');
   }
@@ -78,6 +82,10 @@ export class AuthService {
     return this.http.post(`${API_BASE_URL}/register`, payload, { responseType: 'text' }).pipe(
       switchMap(() => this.login(payload.username, payload.password))
     );
+  }
+
+  registerOnly(payload: RegisterPayload) {
+    return this.http.post(`${API_BASE_URL}/register`, payload, { responseType: 'text' });
   }
 
   registerSeeker(payload: {

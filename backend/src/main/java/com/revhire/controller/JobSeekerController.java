@@ -3,15 +3,20 @@ package com.revhire.controller;
 import com.revhire.dto.JobSeekerProfileRequest;
 import com.revhire.dto.JobSeekerProfileUpdateRequest;
 import com.revhire.entity.Job;
+import com.revhire.exception.BusinessException;
+import com.revhire.security.AuthenticatedUser;
 import com.revhire.service.JobService;
 import com.revhire.service.JobSeekerService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/jobseeker")
+@PreAuthorize("hasRole('JOB_SEEKER')")
 public class JobSeekerController {
 
     private final JobSeekerService jobSeekerService;
@@ -26,7 +31,9 @@ public class JobSeekerController {
     //  COMPLETE PROFILE
     @PostMapping("/profile")
     public ResponseEntity<String> completeProfile(
-            @RequestBody JobSeekerProfileRequest request) {
+            @RequestBody JobSeekerProfileRequest request,
+            Authentication authentication) {
+        validateCurrentUser(authentication, request.userId);
 
         jobSeekerService.completeProfile(request);
         return ResponseEntity.ok("Profile completed successfully");
@@ -35,7 +42,9 @@ public class JobSeekerController {
     //  UPDATE PROFILE
     @PutMapping("/profile")
     public ResponseEntity<String> updateProfile(
-            @RequestBody JobSeekerProfileUpdateRequest request) {
+            @RequestBody JobSeekerProfileUpdateRequest request,
+            Authentication authentication) {
+        validateCurrentUser(authentication, request.getUserId());
 
         jobSeekerService.updateProfile(request);
         return ResponseEntity.ok("Profile updated successfully");
@@ -59,5 +68,12 @@ public class JobSeekerController {
                 minSalary,
                 maxSalary,
                 jobType));
+    }
+
+    private void validateCurrentUser(Authentication authentication, Long userId) {
+        Object principal = authentication != null ? authentication.getPrincipal() : null;
+        if (!(principal instanceof AuthenticatedUser authenticatedUser) || !authenticatedUser.getUserId().equals(userId)) {
+            throw new BusinessException("Unauthorized operation for current user");
+        }
     }
 }

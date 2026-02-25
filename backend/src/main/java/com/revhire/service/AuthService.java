@@ -73,6 +73,7 @@ public class AuthService {
         if ("EMPLOYER".equalsIgnoreCase(req.role)) {
             EmployerProfile employerProfile = new EmployerProfile();
             employerProfile.setUser(savedUser);
+            employerProfile.setContactName(req.fullName != null && !req.fullName.isBlank() ? req.fullName : req.username);
             employerProfile.setCompanyName(req.companyName);
             employerProfile.setIndustry(req.industry);
             employerProfile.setWebsite(req.website);
@@ -100,13 +101,15 @@ public class AuthService {
         }
 
         String loginInput = req.username.trim();
-        String hashedPassword = PasswordUtil.hashPassword(req.password);
 
         User user = userRepo
-                .findByUsernameAndPassword(loginInput, hashedPassword)
-                .or(() -> userRepo.findByEmailAndPassword(loginInput, hashedPassword))
+                .findByUsername(loginInput)
+                .or(() -> userRepo.findByEmail(loginInput))
                 .orElseThrow(() ->
                         new BusinessException("Invalid credentials"));
+        if (!PasswordUtil.matches(req.password, user.getPassword())) {
+            throw new BusinessException("Invalid credentials");
+        }
 
         LoginResponse response = new LoginResponse();
         response.userId = user.getUserId();
@@ -114,6 +117,9 @@ public class AuthService {
         response.role = user.getRole();
         response.fullName = jobSeekerProfileRepo.findByUser_UserId(user.getUserId())
                 .map(JobSeekerProfile::getFullName)
+                .or(() -> employerProfileRepo.findByUser_UserId(user.getUserId()).map(EmployerProfile::getContactName))
+                .or(() -> employerProfileRepo.findByUser_UserId(user.getUserId()).map(EmployerProfile::getCompanyName))
+                .filter(name -> name != null && !name.isBlank())
                 .orElse(user.getUsername());
         return response;
     }
@@ -141,8 +147,10 @@ public class AuthService {
     public void changePassword(String username, String oldPassword, String newPassword) {
 
         User user = userRepo.findByUsername(username)
-                .filter(value -> value.getPassword().equals(PasswordUtil.hashPassword(oldPassword)))
                 .orElseThrow(() -> new BusinessException("Invalid old password"));
+        if (!PasswordUtil.matches(oldPassword, user.getPassword())) {
+            throw new BusinessException("Invalid old password");
+        }
 
         user.setPassword(PasswordUtil.hashPassword(newPassword));
         userRepo.save(user);

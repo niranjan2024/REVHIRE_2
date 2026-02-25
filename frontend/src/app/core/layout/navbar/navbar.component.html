@@ -1,8 +1,6 @@
-﻿<header class="navbar">
-  <a routerLink="/" class="brand">RevHire</a>
-
+<header class="navbar" [class.home-navbar]="isHomeRoute && !authService.isLoggedIn()">
   <nav>
-    <a routerLink="/" routerLinkActive="active">Home</a>
+    <a *ngIf="!authService.isLoggedIn()" routerLink="/" routerLinkActive="active">RevHire</a>
 
     <ng-container *ngIf="authService.getRole() === 'seeker'">
       <a routerLink="/seeker/jobs" routerLinkActive="active">Jobs</a>
@@ -23,9 +21,9 @@
     </a>
   </nav>
 
-  <div class="auth">
-    <a *ngIf="!authService.isLoggedIn()" routerLink="/login">Login</a>
-    <a *ngIf="!authService.isLoggedIn()" routerLink="/register">Register</a>
+  <div *ngIf="showAuthActions" class="auth">
+    <a *ngIf="showGuestAuthLinks" routerLink="/login">Login</a>
+    <a *ngIf="showGuestAuthLinks" routerLink="/register">Register</a>
     <button *ngIf="authService.isLoggedIn()" (click)="logout()">Logout</button>
   </div>
 </header>

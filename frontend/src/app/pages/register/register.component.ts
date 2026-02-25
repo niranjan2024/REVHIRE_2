@@ -11,6 +11,7 @@ import { AuthService, RegisterPayload } from '../../services/auth.service';
 })
 export class RegisterComponent {
   errorMessage = '';
+  successMessage = '';
   showPassword = false;
   showConfirmPassword = false;
 
@@ -23,7 +24,7 @@ export class RegisterComponent {
     securityQuestion: ['', Validators.required],
     securityAnswer: ['', Validators.required],
     role: ['', Validators.required],
-    fullName: [''],
+    fullName: ['', Validators.required],
     location: [''],
     employmentStatus: [''],
     companyName: [''],
@@ -45,12 +46,33 @@ export class RegisterComponent {
   }
 
   submit(): void {
+    this.errorMessage = '';
+    this.successMessage = '';
+
     if (this.form.invalid) {
+      if (this.form.get('mobileNumber')?.hasError('pattern')) {
+        this.errorMessage = 'Mobile number must be exactly 10 digits.';
+      } else if (this.form.get('email')?.hasError('email')) {
+        this.errorMessage = 'Please enter a valid email address.';
+      } else if (this.form.get('password')?.hasError('minlength')) {
+        this.errorMessage = 'Password must be at least 6 characters.';
+      } else if (this.form.get('confirmPassword')?.hasError('minlength')) {
+        this.errorMessage = 'Confirm password must be at least 6 characters.';
+      } else if (this.form.get('role')?.hasError('required')) {
+        this.errorMessage = 'Please choose your role.';
+      } else if (this.form.get('securityQuestion')?.hasError('required')) {
+        this.errorMessage = 'Please choose a security question.';
+      } else if (this.form.get('securityAnswer')?.hasError('required')) {
+        this.errorMessage = 'Please enter a security answer.';
+      } else {
+        this.errorMessage = 'Please fill all required fields correctly.';
+      }
       this.form.markAllAsTouched();
       return;
     }
 
     const value = this.form.getRawValue();
+
     if (value.password !== value.confirmPassword) {
       this.errorMessage = 'Password and confirm password must match.';
       return;
@@ -76,16 +98,13 @@ export class RegisterComponent {
       companyLocation: value.companyLocation ?? ''
     };
 
-    this.authService.register(payload).subscribe({
-      next: (ok) => {
-        if (!ok) {
-          this.errorMessage = 'Registration completed, but auto login failed. Try login manually.';
-          return;
-        }
+    this.authService.registerOnly(payload).subscribe({
+      next: () => {
+        this.successMessage = 'Registration Successfull';
 
-        this.errorMessage = '';
-        const role = this.authService.getRole();
-        this.router.navigate([role === 'employer' ? '/employer-dashboard' : '/job-seeker-dashboard']);
+        setTimeout(() => {
+          this.router.navigate(['/login'], { replaceUrl: true });
+        }, 1500);
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 0) {

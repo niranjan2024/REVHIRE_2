@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { EmployerService } from '../../services/employer.service';
 
 @Component({
   selector: 'app-register-employer',
@@ -28,6 +29,7 @@ export class RegisterEmployerComponent {
   constructor(
     private readonly fb: FormBuilder,
     private readonly authService: AuthService,
+    private readonly employerService: EmployerService,
     private readonly router: Router
   ) {}
 
@@ -56,6 +58,21 @@ export class RegisterEmployerComponent {
         if (!ok) {
           this.errorMessage = 'Account with this email already exists.';
           return;
+        }
+
+        const currentUser = this.authService.getCurrentUser();
+        if (currentUser) {
+          this.employerService.registerCompany(
+            {
+              name: payload.companyName ?? '',
+              industry: payload.industry ?? '',
+              size: payload.size ?? '',
+              description: payload.description ?? '',
+              website: payload.website ?? '',
+              location: payload.companyLocation ?? ''
+            },
+            currentUser.id
+          );
         }
 
         this.router.navigate(['/employer/dashboard']);

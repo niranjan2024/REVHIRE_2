@@ -88,7 +88,7 @@ export class JobService {
 
   updateJobStatus(jobId: number, status: JobStatus): Observable<void> {
     if (status === 'filled') {
-      return this.deleteJob(jobId);
+      return this.http.put(`${API_BASE_URL}/employer/job/${jobId}/fill`, {}).pipe(map(() => void 0));
     }
 
     const endpoint = status === 'closed' ? 'close' : 'reopen';
@@ -151,7 +151,13 @@ export class JobService {
   }
 
   private normalizeStatus(status: string): JobStatus {
-    return status === 'CLOSED' ? 'closed' : 'active';
+    if (status === 'CLOSED') {
+      return 'closed';
+    }
+    if (status === 'FILLED') {
+      return 'filled';
+    }
+    return 'active';
   }
 
   private normalizeJobType(jobType: string): JobModel['jobType'] {

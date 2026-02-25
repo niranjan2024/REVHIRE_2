@@ -13,6 +13,8 @@ import { JobFilter, JobService } from '../../services/job.service';
 export class JobSearchComponent implements OnInit {
   jobs: JobModel[] = [];
   message = '';
+  seekerName = '';
+  private readonly appliedJobIds = new Set<number>();
 
   filtersForm = this.fb.group({
     role: [''],
@@ -32,6 +34,16 @@ export class JobSearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const seeker = this.authService.getCurrentUser();
+    this.seekerName = seeker?.name?.trim() || 'Job Seeker';
+    if (seeker) {
+      this.applicationService.getBySeeker(seeker.id).subscribe((applications) => {
+        this.appliedJobIds.clear();
+        applications
+          .filter((application) => application.status !== 'Withdrawn')
+          .forEach((application) => this.appliedJobIds.add(application.jobId));
+      });
+    }
     this.search();
   }
 
@@ -61,7 +73,14 @@ export class JobSearchComponent implements OnInit {
     const coverLetter = window.prompt('Optional cover letter:') ?? undefined;
     this.applicationService.apply(job.id, seeker, coverLetter).subscribe((result) => {
       this.message = result.message;
+      if (result.ok) {
+        this.appliedJobIds.add(job.id);
+      }
     });
+  }
+
+  canApplyForJob(jobId: number): boolean {
+    return !this.appliedJobIds.has(jobId);
   }
 
   toggleFavorite(job: JobModel): void {

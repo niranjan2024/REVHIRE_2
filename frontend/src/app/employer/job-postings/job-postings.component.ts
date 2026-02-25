@@ -14,17 +14,18 @@ export class JobPostingsComponent implements OnInit {
   jobs: JobModel[] = [];
 
   form = this.fb.group({
+    companyName: ['', Validators.required],
     title: ['', Validators.required],
     description: ['', Validators.required],
     skills: ['', Validators.required],
-    experienceYears: [0, Validators.required],
+    experienceYears: [null as number | null, Validators.required],
     education: ['', Validators.required],
     location: ['', Validators.required],
-    salaryMin: [0, Validators.required],
-    salaryMax: [0, Validators.required],
-    jobType: ['full-time', Validators.required],
+    salaryMin: [null as number | null, Validators.required],
+    salaryMax: [null as number | null, Validators.required],
+    jobType: ['', Validators.required],
     deadline: ['', Validators.required],
-    openings: [1, Validators.required]
+    openings: [null as number | null, Validators.required]
   });
 
   constructor(
@@ -55,8 +56,8 @@ export class JobPostingsComponent implements OnInit {
       return;
     }
 
-    const companyName = this.employerService.getCompanyByOwner(user.id)?.name ?? 'My Company';
     const data = this.form.getRawValue();
+    const companyName = data.companyName?.trim() || this.employerService.getCompanyByOwner(user.id)?.name || '';
 
     this.jobService
       .createJob({
@@ -78,12 +79,9 @@ export class JobPostingsComponent implements OnInit {
         openings: Number(data.openings ?? 1)
       })
       .subscribe(() => {
+        const currentCompanyName = this.form.getRawValue().companyName ?? '';
         this.form.reset({
-          experienceYears: 0,
-          salaryMin: 0,
-          salaryMax: 0,
-          jobType: 'full-time',
-          openings: 1
+          companyName: currentCompanyName
         });
         this.refresh();
       });

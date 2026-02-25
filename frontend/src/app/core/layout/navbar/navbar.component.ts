@@ -32,4 +32,20 @@ export class NavbarComponent {
     this.authService.logout();
     this.router.navigate(['/']);
   }
+
+  get showGuestAuthLinks(): boolean {
+    return !this.authService.isLoggedIn() && this.normalizeUrl(this.router.url) !== '/';
+  }
+
+  get isHomeRoute(): boolean {
+    return this.normalizeUrl(this.router.url) === '/';
+  }
+
+  get showAuthActions(): boolean {
+    return this.authService.isLoggedIn() || this.showGuestAuthLinks;
+  }
+
+  private normalizeUrl(url: string): string {
+    return url.split('?')[0].split('#')[0];
+  }
 }

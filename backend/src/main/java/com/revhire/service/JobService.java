@@ -122,6 +122,14 @@ public class JobService {
         jobRepo.save(job);
     }
 
+    public void fillJob(Long id) {
+        Job job = jobRepo.findById(id)
+                .orElseThrow(() -> new BusinessException("Job not found"));
+
+        job.setStatus("FILLED");
+        jobRepo.save(job);
+    }
+
     public void deleteJob(Long id) {
         if (!jobRepo.existsById(id))
             throw new BusinessException("Job not found");

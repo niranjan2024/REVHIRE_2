@@ -6,18 +6,7 @@ import { CompanyModel } from '../models/company.model';
   providedIn: 'root'
 })
 export class EmployerService {
-  private companiesSubject = new BehaviorSubject<CompanyModel[]>([
-    {
-      id: 1,
-      ownerUserId: 2,
-      name: 'Acme Technologies',
-      industry: 'Software',
-      size: '201-500',
-      description: 'Product engineering company focused on enterprise solutions.',
-      website: 'https://acme.example.com',
-      location: 'San Francisco, CA'
-    }
-  ]);
+  private companiesSubject = new BehaviorSubject<CompanyModel[]>([]);
 
   companies$ = this.companiesSubject.asObservable();
 

@@ -6,11 +6,14 @@ import com.revhire.dto.WithdrawApplicationRequest;
 import com.revhire.entity.Application;
 import com.revhire.entity.Job;
 import com.revhire.entity.User;
+import com.revhire.security.AuthenticatedUser;
 import com.revhire.exception.BusinessException;
 import com.revhire.repository.JobRepository;
 import com.revhire.repository.UserRepository;
 import com.revhire.service.ApplicationService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -37,8 +40,11 @@ public class ApplicationController {
     // APPLY JOB
 
     @PostMapping("/apply")
+    @PreAuthorize("hasRole('JOB_SEEKER')")
     public ResponseEntity<Application> applyJob(
-            @RequestBody ApplyJobRequest request) {
+            @RequestBody ApplyJobRequest request,
+            Authentication authentication) {
+        validateCurrentUser(authentication, request.getUserId());
 
         Job job = jobRepo.findById(request.getJobId())
                 .orElseThrow(() -> new BusinessException("Job not found"));
@@ -53,6 +59,7 @@ public class ApplicationController {
     // VIEW APPLICATIONS BY JOB
 
     @GetMapping("/job/{jobId}")
+    @PreAuthorize("hasRole('EMPLOYER')")
     public ResponseEntity<List<Application>> getApplicationsByJob(
             @PathVariable Long jobId) {
 
@@ -62,6 +69,7 @@ public class ApplicationController {
     }
 
     @GetMapping("/job/{jobId}/search")
+    @PreAuthorize("hasRole('EMPLOYER')")
     public ResponseEntity<List<Application>> searchApplicants(
             @PathVariable Long jobId,
             @RequestParam(required = false) Integer minExperience,
@@ -83,8 +91,11 @@ public class ApplicationController {
     // VIEW APPLICATIONS BY USER
 
     @GetMapping("/user/{userId}")
+    @PreAuthorize("hasRole('JOB_SEEKER')")
     public ResponseEntity<List<Application>> getApplicationsByUser(
-            @PathVariable Long userId) {
+            @PathVariable Long userId,
+            Authentication authentication) {
+        validateCurrentUser(authentication, userId);
 
         return ResponseEntity.ok(
                 applicationService.getApplicationsByUser(userId)
@@ -95,6 +106,7 @@ public class ApplicationController {
     // SHORTLIST APPLICATION
 
     @PutMapping("/shortlist/{applicationId}")
+    @PreAuthorize("hasRole('EMPLOYER')")
     public ResponseEntity<String> shortlist(
             @PathVariable Long applicationId) {
 
@@ -103,6 +115,7 @@ public class ApplicationController {
     }
 
     @PutMapping("/reject/{applicationId}")
+    @PreAuthorize("hasRole('EMPLOYER')")
     public ResponseEntity<String> reject(
             @PathVariable Long applicationId,
             @RequestBody RejectApplicationRequest request) {
@@ -111,10 +124,34 @@ public class ApplicationController {
         return ResponseEntity.ok("Application rejected successfully");
     }
 
+    @PutMapping("/under-review/{applicationId}")
+    @PreAuthorize("hasRole('EMPLOYER')")
+    public ResponseEntity<String> markUnderReview(
+            @PathVariable Long applicationId,
+            @RequestBody(required = false) RejectApplicationRequest request) {
+
+        String comment = request != null ? request.getComment() : null;
+        applicationService.markUnderReview(applicationId, comment);
+        return ResponseEntity.ok("Application marked under review");
+    }
+
+    @PutMapping("/note/{applicationId}")
+    @PreAuthorize("hasRole('EMPLOYER')")
+    public ResponseEntity<String> addEmployerNote(
+            @PathVariable Long applicationId,
+            @RequestBody RejectApplicationRequest request) {
+
+        applicationService.addEmployerNote(applicationId, request.getComment());
+        return ResponseEntity.ok("Application note saved");
+    }
+
     @PutMapping("/withdraw/{applicationId}")
+    @PreAuthorize("hasRole('JOB_SEEKER')")
     public ResponseEntity<String> withdraw(
             @PathVariable Long applicationId,
-            @RequestBody WithdrawApplicationRequest request) {
+            @RequestBody WithdrawApplicationRequest request,
+            Authentication authentication) {
+        validateCurrentUser(authentication, request.getUserId());
 
         applicationService.withdrawApplication(
                 applicationId,
@@ -122,5 +159,12 @@ public class ApplicationController {
                 request.getReason());
 
         return ResponseEntity.ok("Application withdrawn successfully");
+    }
+
+    private void validateCurrentUser(Authentication authentication, Long userId) {
+        Object principal = authentication != null ? authentication.getPrincipal() : null;
+        if (!(principal instanceof AuthenticatedUser authenticatedUser) || !authenticatedUser.getUserId().equals(userId)) {
+            throw new BusinessException("Unauthorized operation for current user");
+        }
     }
 }

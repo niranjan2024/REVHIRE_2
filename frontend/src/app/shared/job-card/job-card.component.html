@@ -6,6 +6,8 @@
   <p>Skills: {{ job.skills.join(', ') }}</p>
   <div class="actions">
     <button type="button" (click)="favorite.emit(job)">{{ isFavorite ? 'Unsave' : 'Save' }}</button>
-    <button type="button" *ngIf="canApply" (click)="apply.emit(job)">Apply</button>
+    <button type="button" [disabled]="!canApply" (click)="apply.emit(job)">
+      {{ canApply ? 'Apply' : 'Applied' }}
+    </button>
   </div>
 </article>

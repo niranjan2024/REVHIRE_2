@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { ApplicationModel, ApplicationStatus } from '../models/application.model';
 import { UserModel } from '../models/user.model';
 import { API_BASE_URL } from './config/api.config';
@@ -13,6 +13,9 @@ interface BackendApplication {
   statusReason?: string;
   employerComment?: string;
   appliedAt: string;
+  seekerFullName?: string;
+  seekerExperienceYears?: number;
+  seekerSkills?: string[];
   job: {
     jobId: number;
   };
@@ -31,11 +34,54 @@ export class ApplicationService {
   constructor(private readonly http: HttpClient) {}
 
   apply(jobId: number, seeker: UserModel, coverLetter?: string): Observable<{ ok: boolean; message: string }> {
-    return this.http.post<BackendApplication>(`${API_BASE_URL}/applications/apply`, {
-      jobId,
-      userId: seeker.id,
-      coverLetter: coverLetter ?? null
-    }).pipe(map(() => ({ ok: true, message: 'Application submitted.' })));
+    const experienceYears = this.firstNumber(seeker.experience?.[0]);
+
+    return this.http
+      .post(`${API_BASE_URL}/jobseeker/profile`, {
+        userId: seeker.id,
+        fullName: seeker.name ?? '',
+        phone: seeker.phone ?? '',
+        location: seeker.location ?? '',
+        experience: experienceYears
+      })
+      .pipe(
+        catchError(() => of(null)),
+        switchMap(() =>
+          this.http.post(`${API_BASE_URL}/resume`, {
+            userId: seeker.id,
+            objective: seeker.resume?.objective ?? '',
+            degree: seeker.education?.[0] ?? '',
+            institution: '',
+            startYear: '',
+            endYear: '',
+            jobTitle: seeker.experience?.[0] ?? '',
+            company: '',
+            expStartDate: '',
+            expEndDate: '',
+            skills: seeker.skills ?? []
+          })
+        ),
+        catchError(() => of(null)),
+        switchMap(() =>
+          this.http.post<BackendApplication>(`${API_BASE_URL}/applications/apply`, {
+            jobId,
+            userId: seeker.id,
+            coverLetter: coverLetter ?? null
+          })
+        ),
+        map(() => ({ ok: true, message: 'Application submitted.' })),
+        catchError((error: HttpErrorResponse) => {
+          if (typeof error.error === 'string' && error.error.trim().length > 0) {
+            return of({ ok: false, message: error.error });
+          }
+
+          if (error.error?.message) {
+            return of({ ok: false, message: error.error.message });
+          }
+
+          return of({ ok: false, message: 'Failed to submit application.' });
+        })
+      );
   }
 
   getBySeeker(seekerId: number): Observable<ApplicationModel[]> {
@@ -55,6 +101,12 @@ export class ApplicationService {
   }
 
   updateStatus(applicationId: number, status: ApplicationStatus, comment?: string): Observable<void> {
+    if (status === 'Under Review') {
+      return this.http
+        .put(`${API_BASE_URL}/applications/under-review/${applicationId}`, { comment: comment ?? '' })
+        .pipe(map(() => void 0));
+    }
+
     if (status === 'Shortlisted') {
       return this.http.put(`${API_BASE_URL}/applications/shortlist/${applicationId}`, {}).pipe(map(() => void 0));
     }
@@ -77,21 +129,30 @@ export class ApplicationService {
       .pipe(map(() => void 0));
   }
 
-  addNote(_applicationId: number, _note: string): void {}
+  addNote(applicationId: number, note: string): Observable<void> {
+    return this.http.put(`${API_BASE_URL}/applications/note/${applicationId}`, { comment: note }).pipe(map(() => void 0));
+  }
 
   private toFrontend(application: BackendApplication): ApplicationModel {
-    const experienceText = typeof application.user.experience === 'number' ? [`${application.user.experience} years`] : [];
+    const seekerExperienceYears =
+      typeof application.seekerExperienceYears === 'number'
+        ? application.seekerExperienceYears
+        : typeof application.user.experience === 'number'
+          ? application.user.experience
+          : undefined;
+    const experienceText = typeof seekerExperienceYears === 'number' ? [`${seekerExperienceYears} years`] : [];
     return {
       id: application.applicationId,
       jobId: application.job.jobId,
       seekerId: application.user.userId,
-      seekerName: application.user.fullName || application.user.username || 'Candidate',
-      seekerSkills: [],
+      seekerName: application.seekerFullName || application.user.fullName || application.user.username || 'Candidate',
+      seekerSkills: application.seekerSkills ?? [],
       seekerExperience: experienceText,
       coverLetter: application.coverLetter,
       status: this.normalizeStatus(application.status),
       appliedAt: application.appliedAt,
       comments: application.employerComment,
+      note: application.employerComment,
       withdrawReason: application.statusReason
     };
   }
@@ -109,5 +170,14 @@ export class ApplicationService {
       default:
         return 'Applied';
     }
+  }
+
+  private firstNumber(value?: string): number {
+    if (!value) {
+      return 0;
+    }
+
+    const match = value.match(/\d+/);
+    return match ? Number(match[0]) : 0;
   }
 }

@@ -1,5 +1,6 @@
 ﻿<section>
   <h2>Applicants</h2>
+  <p *ngIf="statusMessage">{{ statusMessage }}</p>
 
   <form [formGroup]="filtersForm" (ngSubmit)="search()" class="filters">
     <select formControlName="status">

@@ -3,9 +3,13 @@ package com.revhire.controller;
 import com.revhire.dto.EmployerProfileRequest;
 import com.revhire.dto.JobRequest;
 import com.revhire.entity.Job;
+import com.revhire.exception.BusinessException;
+import com.revhire.security.AuthenticatedUser;
 import com.revhire.service.EmployerService;
 import com.revhire.service.JobService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/employer")
+@PreAuthorize("hasRole('EMPLOYER')")
 public class EmployerController {
 
     private final JobService jobService;
@@ -25,7 +30,8 @@ public class EmployerController {
     }
 
     @PostMapping("/job")
-    public ResponseEntity<Job> postJob(@RequestBody JobRequest req) {
+    public ResponseEntity<Job> postJob(@RequestBody JobRequest req, Authentication authentication) {
+        validateCurrentUser(authentication, req.getEmployerId());
         return ResponseEntity.ok(jobService.postJob(req));
     }
 
@@ -54,6 +60,12 @@ public class EmployerController {
         return ResponseEntity.ok("Job reopened");
     }
 
+    @PutMapping("/job/{id}/fill")
+    public ResponseEntity<String> fillJob(@PathVariable Long id) {
+        jobService.fillJob(id);
+        return ResponseEntity.ok("Job marked as filled");
+    }
+
     @DeleteMapping("/job/{id}")
     public ResponseEntity<String> deleteJob(@PathVariable Long id) {
         jobService.deleteJob(id);
@@ -67,9 +79,18 @@ public class EmployerController {
 
     @PutMapping("/company-profile")
     public ResponseEntity<String> updateCompanyProfile(
-            @RequestBody EmployerProfileRequest req) {
+            @RequestBody EmployerProfileRequest req,
+            Authentication authentication) {
+        validateCurrentUser(authentication, req.userId);
         employerService.updateCompanyProfile(req);
         return ResponseEntity.ok("Company profile updated");
+    }
+
+    private void validateCurrentUser(Authentication authentication, Long userId) {
+        Object principal = authentication != null ? authentication.getPrincipal() : null;
+        if (!(principal instanceof AuthenticatedUser authenticatedUser) || !authenticatedUser.getUserId().equals(userId)) {
+            throw new BusinessException("Unauthorized operation for current user");
+        }
     }
 }
 
