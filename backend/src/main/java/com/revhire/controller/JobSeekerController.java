@@ -69,7 +69,7 @@ public class JobSeekerController {
             @RequestParam(required = false) String jobType) {
 
         return ResponseEntity.ok(jobService.searchJobs(
-                title,
+                title,          
                 location,
                 experienceYears,
                 companyName,
