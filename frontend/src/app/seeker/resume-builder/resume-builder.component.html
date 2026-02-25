@@ -1,0 +1,19 @@
+﻿<section class="card">
+  <h2>Resume Builder</h2>
+
+  <form [formGroup]="form" (ngSubmit)="saveTextResume()" class="form">
+    <label>Objective <textarea formControlName="objective"></textarea></label>
+    <label>Education (comma separated) <input formControlName="education" /></label>
+    <label>Experience (comma separated) <input formControlName="experience" /></label>
+    <label>Skills (comma separated) <input formControlName="skills" /></label>
+    <label>Projects (comma separated) <input formControlName="projects" /></label>
+    <label>Certifications (comma separated) <input formControlName="certifications" /></label>
+    <button type="submit">Save Text Resume</button>
+  </form>
+  <p class="message" *ngIf="message">{{ message }}</p>
+
+  <hr />
+  <h3>Upload Formatted Resume</h3>
+  <input type="file" accept=".pdf,.doc,.docx" (change)="uploadResume($event)" />
+  <p class="message" *ngIf="uploadMessage">{{ uploadMessage }}</p>
+</section>

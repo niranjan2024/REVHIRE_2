@@ -1,0 +1,38 @@
+﻿<section>
+  <h2>Manage Job Postings</h2>
+
+  <form [formGroup]="form" (ngSubmit)="createJob()" class="grid">
+    <input formControlName="companyName" placeholder="Company name" />
+    <input formControlName="title" placeholder="Title" />
+    <textarea formControlName="description" placeholder="Description"></textarea>
+    <input formControlName="skills" placeholder="Skills (comma separated)" />
+    <input formControlName="experienceYears" type="number" placeholder="Experience years" />
+    <input formControlName="education" placeholder="Education" />
+    <input formControlName="location" placeholder="Location" />
+    <input formControlName="salaryMin" type="number" placeholder="Salary min" />
+    <input formControlName="salaryMax" type="number" placeholder="Salary max" />
+    <select formControlName="jobType">
+      <option value="" disabled>Select job type</option>
+      <option value="full-time">Full-time</option>
+      <option value="part-time">Part-time</option>
+      <option value="contract">Contract</option>
+      <option value="internship">Internship</option>
+      <option value="remote">Remote</option>
+    </select>
+    <input formControlName="deadline" type="date" />
+    <input formControlName="openings" type="number" placeholder="Openings" />
+    <button type="submit">Create Job</button>
+  </form>
+
+  <article class="card" *ngFor="let job of jobs">
+    <h3>{{ job.title }}</h3>
+    <p><strong>{{ job.companyName }}</strong></p>
+    <p>{{ job.location }} | {{ job.jobType }} | Status: {{ job.status }}</p>
+    <div class="actions">
+      <button type="button" (click)="updateStatus(job.id, 'closed')">Close</button>
+      <button type="button" (click)="updateStatus(job.id, 'active')">Reopen</button>
+      <button type="button" (click)="updateStatus(job.id, 'filled')">Mark Filled</button>
+      <button type="button" (click)="delete(job.id)">Delete</button>
+    </div>
+  </article>
+</section>

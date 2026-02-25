@@ -1,0 +1,22 @@
+﻿<section class="card">
+  <h2>Employer Registration</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+    <h3>Account</h3>
+    <label>Full Name <input formControlName="accountName" /></label>
+    <label>Email <input formControlName="email" type="email" /></label>
+    <label>Password <input formControlName="password" type="password" /></label>
+    <label>Phone <input formControlName="phone" /></label>
+    <label>Location <input formControlName="location" /></label>
+
+    <h3>Company</h3>
+    <label>Company Name <input formControlName="companyName" /></label>
+    <label>Industry <input formControlName="industry" /></label>
+    <label>Size <input formControlName="size" /></label>
+    <label>Description <textarea formControlName="description"></textarea></label>
+    <label>Website <input formControlName="website" /></label>
+    <label>Company Location <input formControlName="companyLocation" /></label>
+
+    <button type="submit">Create Employer Account</button>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</section>

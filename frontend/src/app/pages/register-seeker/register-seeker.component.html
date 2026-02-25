@@ -1,0 +1,13 @@
+﻿<section class="card">
+  <h2>Job Seeker Registration</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+    <label>Name <input formControlName="name" /></label>
+    <label>Email <input formControlName="email" type="email" /></label>
+    <label>Password <input formControlName="password" type="password" /></label>
+    <label>Phone <input formControlName="phone" /></label>
+    <label>Location <input formControlName="location" /></label>
+    <label>Employment Status <input formControlName="currentEmploymentStatus" /></label>
+    <button type="submit">Create Account</button>
+    <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </form>
+</section>
